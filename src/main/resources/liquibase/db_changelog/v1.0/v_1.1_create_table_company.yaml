@@ -26,13 +26,8 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: description
+                  name: documents
                   type: VARCHAR(500)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: rating
-                  type: DOUBLE
                   constraints:
                     nullable: false
               - column:

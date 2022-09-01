@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 1.2.0
+      id: 1.3.0
       author: olga.makeeva
       changes:
         - createSequence:
@@ -9,7 +9,7 @@ databaseChangeLog:
             sequenceName:  seq_comments_id
             startValue:  1
   - changeSet:
-      id: 1.2.1
+      id: 1.3.1
       author: olga.makeeva
       changes:
         - createTable:
@@ -36,11 +36,10 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: company_id
-                  type: BIGINT
-              - column:
                   name: rating
                   type: DOUBLE
+                  constraints:
+                    nullable: false
               - column:
                   name: created
                   type: TIMESTAMP
@@ -52,7 +51,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
   - changeSet:
-      id: 1.2.2
+      id: 1.3.2
       author: olga.makeeva
       changes:
         - addForeignKeyConstraint:
@@ -62,8 +61,8 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: users
         - addForeignKeyConstraint:
-            baseColumnNames: company_id
+            baseColumnNames: entertainment_id
             baseTableName: comments
-            constraintName: fk_comments_company
+            constraintName: fk_comments_entertainment
             referencedColumnNames: id
-            referencedTableName: company
+            referencedTableName: entertainment
