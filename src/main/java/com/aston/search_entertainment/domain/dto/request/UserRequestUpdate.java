@@ -1,5 +1,6 @@
 package com.aston.search_entertainment.domain.dto.request;
 
+import com.aston.search_entertainment.domain.entity.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,5 +16,5 @@ public class UserRequestUpdate {
     private String firstName;
     private String lastName;
     private LocalDate created;
-    private String role;
+    private Role role;
 }

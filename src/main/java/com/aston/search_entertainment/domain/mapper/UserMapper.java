@@ -13,5 +13,4 @@ public interface UserMapper {
 
     UserEntity fromRequestUpdate(UserRequestUpdate userRequestUpdate);
 
-    UserEntity merge(UserEntity source, UserEntity target);
 }

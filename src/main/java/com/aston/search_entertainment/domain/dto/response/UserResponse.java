@@ -1,5 +1,6 @@
 package com.aston.search_entertainment.domain.dto.response;
 
+import com.aston.search_entertainment.domain.entity.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 public class UserResponse {
     private long id;
     private String email;
-    private String role;
+    private Role role;
     private String firstName;
     private String lastName;
     private LocalDate created;

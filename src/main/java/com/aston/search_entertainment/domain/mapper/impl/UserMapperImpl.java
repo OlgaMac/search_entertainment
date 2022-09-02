@@ -38,8 +38,4 @@ public class UserMapperImpl implements UserMapper {
         return objectMapper.convertValue(userRequestUpdate, UserEntity.class);
     }
 
-    @Override
-    public UserEntity merge(UserEntity source, UserEntity target) {
-        return null;
-    }
 }
