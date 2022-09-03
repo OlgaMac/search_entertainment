@@ -3,14 +3,14 @@ package com.aston.search_entertainment.domain.mapper;
 import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
-import com.aston.search_entertainment.domain.entity.UserEntity;
+import com.aston.search_entertainment.domain.entity.User;
 
 public interface UserMapper {
 
-    UserResponse toResponse(UserEntity userEntity);
+    UserResponse toResponse(User user);
 
-    UserEntity fromRequest(UserRequest userRequest);
+    User fromRequest(UserRequest userRequest);
 
-    UserEntity fromRequestUpdate(UserRequestUpdate userRequestUpdate);
+    User fromRequestUpdate(UserRequestUpdate userRequestUpdate);
 
 }
