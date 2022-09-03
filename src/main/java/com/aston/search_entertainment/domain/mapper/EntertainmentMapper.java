@@ -10,7 +10,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface EntertainmentMapper {
 
-    EntertainmentEntity toComment(EntertainmentRequest request);
+    EntertainmentEntity toEntertainment(EntertainmentRequest request);
 
-    EntertainmentResponse toCommentResponse(EntertainmentEntity entertainment);
+    EntertainmentResponse toEntertainmentResponse(EntertainmentEntity entertainment);
 }
