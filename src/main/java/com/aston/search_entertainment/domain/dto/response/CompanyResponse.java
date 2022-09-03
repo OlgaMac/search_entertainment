@@ -1,6 +1,6 @@
 package com.aston.search_entertainment.domain.dto.response;
 
-import com.aston.search_entertainment.domain.entity.UserEntity;
+import com.aston.search_entertainment.domain.entity.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 public class CompanyResponse {
     private long id;
     private String name;
-    private UserEntity userId;
+    private User userId;
     private String location;
     private String documents;
 }

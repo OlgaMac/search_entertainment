@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -17,6 +19,6 @@ public class UserRequest {
     private String password;
     private String firstName;
     private String lastName;
-    private LocalDate created;
+    private Timestamp created;
     private Role role;
 }

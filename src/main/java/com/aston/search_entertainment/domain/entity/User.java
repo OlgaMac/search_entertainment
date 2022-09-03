@@ -16,8 +16,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -46,10 +50,9 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "created")
-    private LocalDate created;
+    private Timestamp created;
     @Column(name = "enabled")
     private boolean enable;
-
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL)
     private List<CompanyEntity> companies;

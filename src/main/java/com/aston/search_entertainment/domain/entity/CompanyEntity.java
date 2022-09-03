@@ -40,7 +40,7 @@ public class CompanyEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private UserEntity userId;
+    private User userId;
 
     @Column(name = "location")
     private String location;
