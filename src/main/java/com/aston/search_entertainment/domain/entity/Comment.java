@@ -33,7 +33,7 @@ public class Comment {
 
     @Column(nullable = false, name = "entertainment_id")
     @NotNull
-    private Long entertainment_id;
+    private EntertainmentEntity entertainment;
 
     @Column(nullable = false, name = "rating")
     private Double rating;
