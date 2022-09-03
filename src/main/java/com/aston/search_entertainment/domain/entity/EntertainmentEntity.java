@@ -1,10 +1,24 @@
 package com.aston.search_entertainment.domain.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 @Getter
@@ -27,7 +41,7 @@ public class EntertainmentEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    private UserEntity company_id;
+    private CompanyEntity company_id;
 
     @Column(name = "location")
     private String location;
