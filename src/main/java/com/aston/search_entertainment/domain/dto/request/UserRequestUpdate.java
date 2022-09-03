@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -18,5 +19,5 @@ public class UserRequestUpdate {
     private String firstName;
     private String lastName;
     private Timestamp created;
-    private Role role;
+    private String role;
 }

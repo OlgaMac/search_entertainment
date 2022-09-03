@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 public class UserResponse {
     private long id;
     private String email;
-    private Role role;
+    private String role;
     private String firstName;
     private String lastName;
     private Timestamp created;

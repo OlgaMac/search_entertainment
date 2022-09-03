@@ -34,7 +34,7 @@ public class EntertainmentEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_entertainment_id")
     @GenericGenerator(name = "seq_entertainment_id", strategy = "sequence",
             parameters = {@org.hibernate.annotations.Parameter(name = "sequence", value = "seq_entertainment_id")})
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
