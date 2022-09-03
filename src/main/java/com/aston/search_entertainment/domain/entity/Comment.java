@@ -29,7 +29,7 @@ public class Comment {
 
     @Column(nullable = false, name = "user id")
     @NotNull
-    private UserEntity user;
+    private User user;
 
     @Column(nullable = false, name = "entertainment_id")
     @NotNull

@@ -3,7 +3,7 @@ package com.aston.search_entertainment.domain.mapper.impl;
 import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
-import com.aston.search_entertainment.domain.entity.UserEntity;
+import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.domain.mapper.UserMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
@@ -18,24 +18,24 @@ public class UserMapperImpl implements UserMapper {
 
 
     @Override
-    public UserResponse toResponse(UserEntity userEntity) {
+    public UserResponse toResponse(User user) {
         UserResponse userResponse = new UserResponse();
         return userResponse
-                .setId(userEntity.getId())
-                .setEmail(userEntity.getEmail())
-                .setLastName(userEntity.getLastName())
-                .setFirstName(userEntity.getFirstName())
-                .setCreated(userEntity.getCreated());
+                .setId(user.getId())
+                .setEmail(user.getEmail())
+                .setLastName(user.getLastName())
+                .setFirstName(user.getFirstName())
+                .setCreated(user.getCreated());
     }
 
     @Override
-    public UserEntity fromRequest(UserRequest userRequest) {
-        return objectMapper.convertValue(userRequest, UserEntity.class);
+    public User fromRequest(UserRequest userRequest) {
+        return objectMapper.convertValue(userRequest, User.class);
     }
 
     @Override
-    public UserEntity fromRequestUpdate(UserRequestUpdate userRequestUpdate) {
-        return objectMapper.convertValue(userRequestUpdate, UserEntity.class);
+    public User fromRequestUpdate(UserRequestUpdate userRequestUpdate) {
+        return objectMapper.convertValue(userRequestUpdate, User.class);
     }
 
 }
