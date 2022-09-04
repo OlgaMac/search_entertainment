@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> findById(long id) {
-        Optional<User> user = userRepository.findById(id);
-        return user ;
+        Optional<User> user = Optional.ofNullable(userRepository.findById(id).orElseThrow(() -> new RuntimeException("Пользователь не найден")));
+        return user;
     }
 }
