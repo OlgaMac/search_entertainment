@@ -26,7 +26,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "company")
-public class CompanyEntity {
+public class Company {
 
     @Id
     @Column(name = "id")
@@ -40,7 +40,7 @@ public class CompanyEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private UserEntity userId;
+    private User userId;
 
     @Column(name = "location")
     private String location;

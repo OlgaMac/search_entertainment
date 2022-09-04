@@ -21,7 +21,7 @@
         <org.liquibase.version>4.15.0</org.liquibase.version>
         <org.projectlombok.version>1.18.24</org.projectlombok.version>
         <org.junit.jupiter.version>5.9.0</org.junit.jupiter.version>
-        <io.springfox.version>2.9.2</io.springfox.version>
+        <io.springfox.version>3.0.0</io.springfox.version>
         <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 
@@ -82,13 +82,13 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.4.28.Final</version>
+            <version>5.6.11.Final</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.8.Final</version>
+            <version>5.6.11.Final</version>
         </dependency>
 
         <!-- Databases - Uses H2 by default -->
@@ -140,6 +140,20 @@
             <artifactId>springfox-data-rest</artifactId>
             <version>${io.springfox.version}</version>
         </dependency>
+
+        <!-- Loging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- Tests -->
         <dependency>

@@ -5,15 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class CommentRequest {
-
-    private Long id;
 
     private String text;
 
@@ -22,9 +18,5 @@ public class CommentRequest {
     private Long entertainment_id;
 
     private Double rating;
-
-    private LocalDate created;
-
-    private LocalDate updated;
 
 }
