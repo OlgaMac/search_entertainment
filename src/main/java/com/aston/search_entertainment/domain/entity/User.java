@@ -11,6 +11,8 @@ import org.hibernate.annotations.Parameter;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,24 +35,32 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_users_id")
     @GenericGenerator(name = "seq_users_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_users_id")})
-    private long id;
+    private Long id;
+
     @Column(name = "email")
     @Email
     private String email;
+
     @Column(name = "password")
     private String password;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
+
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "created")
     private LocalDate created;
+
     @Column(name = "enabled")
     private boolean enable;
 
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL)
-    private List<CompanyEntity> companies;
+    private List<Company> companies;
 }

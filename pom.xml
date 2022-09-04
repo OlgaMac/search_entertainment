@@ -82,13 +82,13 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.4.28.Final</version>
+            <version>5.6.11.Final</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.8.Final</version>
+            <version>5.6.11.Final</version>
         </dependency>
 
         <!-- Databases - Uses H2 by default -->
@@ -139,6 +139,19 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-data-rest</artifactId>
             <version>${io.springfox.version}</version>
+        </dependency>
+
+        <!-- Loging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- Tests -->
