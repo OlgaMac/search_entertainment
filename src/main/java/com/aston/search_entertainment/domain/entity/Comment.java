@@ -1,5 +1,9 @@
 package com.aston.search_entertainment.domain.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,11 +22,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -56,12 +58,14 @@ public class Comment {
     private Double rating;
 
     @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(nullable = false, name = "created")
-    private Date created;
+    private LocalDateTime created;
 
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(nullable = false, name = "updated")
-    private Date updated;
+    private LocalDateTime updated;
 }
