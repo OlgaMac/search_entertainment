@@ -7,6 +7,8 @@ import com.aston.search_entertainment.service.CommentService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +34,13 @@ public class CommentController {
         return commentService.getListOfCommentDto();
     }
 
+    @ApiOperation(value = "Get comment by id")
+    @GetMapping({"/id"})
+    CommentResponse getCommentById(@PathVariable(value = "id") Long id) {
+        log.info("get comment by id");
+        return commentService.getById(id);
+    }
+
     @ApiOperation(value = "Create comment")
     @PostMapping
     CommentResponse createComment(@RequestBody CommentRequest commentRequest) {
@@ -44,6 +53,13 @@ public class CommentController {
     CommentResponse editComment(@PathVariable Long id, @RequestBody CommentRequestForEdit commentRequest) {
         log.info("Receiving request for edit comment with id: {}", id);
         return commentService.editComment(id, commentRequest);
+    }
+
+    @DeleteMapping({"/id"})
+    ResponseEntity<String> deleteCommentById(@PathVariable(value = "id") Long id) {
+        log.info("Receiving request for deleting comment with id: {}", id);
+        commentService.deleteCommentById(id);
+        return ResponseEntity.ok("Comment delete successfully");
     }
 
 

@@ -19,4 +19,8 @@ public interface CommentService {
 
     CommentResponse editComment(Long id, CommentRequestForEdit commentRequest);
 
+    CommentResponse getById(Long id);
+
+    void deleteCommentById(Long id);
+
 }

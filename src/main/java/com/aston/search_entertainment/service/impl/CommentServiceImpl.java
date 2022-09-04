@@ -47,4 +47,14 @@ public class CommentServiceImpl implements CommentService {
 
         return commentMapper.toCommentResponse(commentRepository.getCommentById(id));
     }
+
+    @Override
+    public CommentResponse getById(Long id) {
+        return commentMapper.toCommentResponse(commentRepository.getCommentById(id));
+    }
+
+    @Override
+    public void deleteCommentById(Long id) {
+        commentRepository.deleteById(id);
+    }
 }
