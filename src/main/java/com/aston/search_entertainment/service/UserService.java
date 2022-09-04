@@ -1,5 +1,7 @@
 package com.aston.search_entertainment.service;
 
+import com.aston.search_entertainment.domain.dto.request.UserRequest;
+import com.aston.search_entertainment.domain.dto.response.UserResponse;
 import com.aston.search_entertainment.domain.entity.User;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
@@ -11,4 +13,5 @@ import java.util.Optional;
 public interface UserService {
     List<User> findAll ();
     Optional<User> findById(long id) throws ChangeSetPersister.NotFoundException;
+    UserResponse save(UserRequest userRequest);
 }

@@ -18,8 +18,6 @@ public class UserRequestUpdate {
     private String password;
     private String firstName;
     private String lastName;
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime created;
     private String role;
+    private boolean enable;
 }
