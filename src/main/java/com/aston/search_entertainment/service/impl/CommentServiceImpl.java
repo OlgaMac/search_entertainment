@@ -1,11 +1,11 @@
 package com.aston.search_entertainment.service.impl;
 
 import com.aston.search_entertainment.domain.dto.request.CommentRequest;
+import com.aston.search_entertainment.domain.dto.request.CommentRequestForEdit;
 import com.aston.search_entertainment.domain.dto.response.CommentResponse;
 import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.mapper.CommentMapper;
 import com.aston.search_entertainment.repository.CommentRepository;
-import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,6 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentMapper commentMapper;
 
-    private final UserRepository userRepository;
     @Override
     public List<CommentResponse> getListOfCommentDto() {
         log.debug("get countries");
@@ -40,5 +39,12 @@ public class CommentServiceImpl implements CommentService {
         commentRepository.save(comment);
 
         return commentMapper.toCommentResponse(comment);
+    }
+
+    @Override
+    public CommentResponse editComment(Long id, CommentRequestForEdit commentRequest) {
+        commentRepository.setCommentInfoById(commentRequest.getText(), id);
+
+        return commentMapper.toCommentResponse(commentRepository.getCommentById(id));
     }
 }
