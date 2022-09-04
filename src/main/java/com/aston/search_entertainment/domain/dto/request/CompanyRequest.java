@@ -14,6 +14,9 @@ public class CompanyRequest {
     private long id;
     private String name;
     private User userId;
+
+    private User userId;
+
     private String location;
     private String documents;
 }

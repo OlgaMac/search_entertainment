@@ -1,4 +1,4 @@
-package com.aston.search_entertainment.domain.dto.request;
+package com.aston.search_entertainment.domain.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CommentRequest {
+public class CommentResponse {
+
+    private Long id;
 
     private String text;
 
@@ -18,5 +20,4 @@ public class CommentRequest {
     private Long entertainment_id;
 
     private Double rating;
-
 }

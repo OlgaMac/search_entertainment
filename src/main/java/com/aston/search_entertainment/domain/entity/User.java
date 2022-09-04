@@ -46,7 +46,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_users_id")
     @GenericGenerator(name = "seq_users_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_users_id")})
-    private long id;
+    private Long id;
+
     @Column(name = "email")
     @Email
     private String email;
@@ -66,5 +67,5 @@ public class User {
     private boolean enable;
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL)
-    private List<CompanyEntity> companies;
+    private List<Company> companies;
 }

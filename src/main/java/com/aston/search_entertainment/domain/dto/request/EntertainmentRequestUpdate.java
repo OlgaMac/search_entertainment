@@ -1,6 +1,7 @@
 package com.aston.search_entertainment.domain.dto.request;
 
 import com.aston.search_entertainment.domain.entity.User;
+import com.aston.search_entertainment.domain.entity.Company;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
