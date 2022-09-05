@@ -14,8 +14,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface CommentMapper {
 
 
-//    @Mapping(target = "user", expression = "java(userRepository.findUserById(request.getUser_id()))")
-//    @Mapping(target = "entertainment", expression = "java(entertainmentRepository.findEntertainmentById(request.getEntertainment_id()))")
+
     @Mapping(source = "user_id", target = "user", qualifiedByName = "getUserFromRepo")
     @Mapping(source = "entertainment_id", target = "entertainment", qualifiedByName = "getEntertainmentFromRepo")
     Comment toComment(CommentRequest request);
