@@ -11,11 +11,8 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 public class EntertainmentRequestUpdate {
-    private long id;
 
-    private String name;
 
-    private Company company_id;
 
     private String location;
 
@@ -23,7 +20,4 @@ public class EntertainmentRequestUpdate {
 
     private String url;
 
-    private Date date;
-
-    private Double rating;
 }
