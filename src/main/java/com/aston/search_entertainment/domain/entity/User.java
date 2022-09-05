@@ -37,7 +37,6 @@ public class User {
     @GenericGenerator(name = "seq_users_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_users_id")})
     private Long id;
-
     @Column(name = "email")
     @Email
     private String email;

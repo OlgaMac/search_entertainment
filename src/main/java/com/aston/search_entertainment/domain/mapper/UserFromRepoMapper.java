@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.mapstruct.Named;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 @Component
