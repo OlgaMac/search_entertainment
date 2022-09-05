@@ -6,22 +6,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -36,14 +40,14 @@ public class Entertainment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_entertainment_id")
     @GenericGenerator(name = "seq_entertainment_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_entertainment_id")})
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
-    private Company company_id;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     @Column(name = "location")
     private String location;
@@ -54,10 +58,14 @@ public class Entertainment {
     @Column(name = "url")
     private String url;
 
-    @Column(name = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    //    @Column(name = "date")
+    @CreationTimestamp
+    private Timestamp date;
 
     @Column(name = "rating")
     private Double rating;
+
+    @OneToMany(mappedBy = "entertainment"
+            , cascade = CascadeType.ALL)
+    private List<Comment> comments;
 }

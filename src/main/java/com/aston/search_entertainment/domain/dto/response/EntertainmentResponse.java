@@ -1,5 +1,9 @@
 package com.aston.search_entertainment.domain.dto.response;
 import com.aston.search_entertainment.domain.entity.Company;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +22,7 @@ public class EntertainmentResponse {
 
     private String name;
 
-    private Company company_id;
+    private Long company_id;
 
     private String location;
 
@@ -26,7 +30,9 @@ public class EntertainmentResponse {
 
     private String url;
 
-    private Date date;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate date;
 
     private Double rating;
 }

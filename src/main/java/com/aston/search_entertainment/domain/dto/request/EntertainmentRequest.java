@@ -14,11 +14,11 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EntertainmentRequest {
 
-    private long id;
+//    private Long id;
 
     private String name;
 
-    private Company companyId;
+    private Long company_id;
 
     private String location;
 
@@ -26,7 +26,7 @@ public class EntertainmentRequest {
 
     private String url;
 
-    private Date date;
+//    private Date date;
 
     private Double rating;
 }
