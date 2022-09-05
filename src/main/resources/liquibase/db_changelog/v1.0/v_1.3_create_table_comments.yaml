@@ -39,6 +39,8 @@ databaseChangeLog:
                   name: rating
                   type: DOUBLE
                   constraints:
+                    constraintName: rating_from_1_to_5
+                    checkConstraint: CHECK (rating >= 1.0 AND rating <= 5.0)
                     nullable: false
               - column:
                   name: created
@@ -48,6 +50,11 @@ databaseChangeLog:
               - column:
                   name: updated
                   type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rating_counter
+                  type: BIGINT
                   constraints:
                     nullable: false
   - changeSet:
