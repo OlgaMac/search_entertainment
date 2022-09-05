@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserRequestUpdate {
+    private Long id;
 
     private String email;
 
@@ -27,5 +28,4 @@ public class UserRequestUpdate {
 
     private String role;
 
-    private boolean enable;
 }

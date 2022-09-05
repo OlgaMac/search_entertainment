@@ -1,6 +1,7 @@
 package com.aston.search_entertainment.service.impl;
 
 import com.aston.search_entertainment.domain.dto.request.UserRequest;
+import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
 import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.domain.mapper.UserMapper;
@@ -8,6 +9,7 @@ import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,6 +46,25 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.fromRequest(userRequest);
         userRepository.save(user);
         return userMapper.toResponse(user);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+         userRepository.deleteById(id);
+    }
+    @Transactional
+    public UserResponse update (UserRequestUpdate update){
+        User user = userMapper.fromRequestUpdate(update);
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        User newUser = userOptional.get();
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(user.getPassword());
+        newUser.setLastName(user.getLastName());
+        newUser.setFirstName(user.getFirstName());
+        newUser.setRole(user.getRole());
+       userRepository.save(newUser);
+       return userMapper.toResponse(newUser);
     }
 
 }

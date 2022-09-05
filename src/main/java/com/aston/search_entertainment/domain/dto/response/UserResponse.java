@@ -27,6 +27,7 @@ public class UserResponse {
 
     private String lastName;
 
+
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate created;
