@@ -13,8 +13,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
         uses = UserFromRepoMapper.class)
 public interface CommentMapper {
 
-
-
     @Mapping(source = "user_id", target = "user", qualifiedByName = "getUserFromRepo")
     @Mapping(source = "entertainment_id", target = "entertainment", qualifiedByName = "getEntertainmentFromRepo")
     Comment toComment(CommentRequest request);
