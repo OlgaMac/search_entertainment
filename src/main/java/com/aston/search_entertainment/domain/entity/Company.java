@@ -38,6 +38,9 @@ public class Company {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "link")
+    private String link;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User userId;
