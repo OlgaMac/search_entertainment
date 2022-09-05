@@ -14,12 +14,17 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@Accessors
+@Accessors(chain = true)
 public class UserResponse {
-    private long id;
+
+    private Long id;
+
     private String email;
+
     private String role;
+
     private String firstName;
+
     private String lastName;
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)

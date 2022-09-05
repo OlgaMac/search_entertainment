@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,20 +29,20 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "entertainment")
-public class EntertainmentEntity {
+public class Entertainment {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_entertainment_id")
     @GenericGenerator(name = "seq_entertainment_id", strategy = "sequence",
-            parameters = {@org.hibernate.annotations.Parameter(name = "sequence", value = "seq_entertainment_id")})
-    private Long id;
+            parameters = {@Parameter(name = "sequence", value = "seq_entertainment_id")})
+    private long id;
 
     @Column(name = "name")
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    private CompanyEntity company_id;
+    private Company company_id;
 
     @Column(name = "location")
     private String location;

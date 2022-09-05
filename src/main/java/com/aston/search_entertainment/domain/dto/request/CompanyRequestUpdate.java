@@ -9,9 +9,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CompanyRequestUpdate {
+
     private long id;
+
     private String name;
+
     private User userId;
+
     private String location;
+
     private String documents;
 }

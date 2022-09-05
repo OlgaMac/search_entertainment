@@ -29,8 +29,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -46,25 +45,32 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_users_id")
     @GenericGenerator(name = "seq_users_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_users_id")})
-    private long id;
+    private Long id;
+
     @Column(name = "email")
     @Email
     private String email;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
+
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "created")
-    @CreationTimestamp
-    private Timestamp created;
+    private LocalDate created;
+
     @Column(name = "enabled")
     private boolean enable;
+
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL)
-    private List<CompanyEntity> companies;
+    private List<Company> companies;
 }

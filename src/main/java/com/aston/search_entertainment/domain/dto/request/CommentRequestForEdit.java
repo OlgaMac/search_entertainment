@@ -6,17 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class CommentResponse {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CommentRequestForEdit {
 
     private String text;
-
-    private Long user_id;
-
-    private Long entertainment_id;
-
-    private Double rating;
 
 }

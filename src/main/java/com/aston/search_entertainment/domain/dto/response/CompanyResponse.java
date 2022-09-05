@@ -11,9 +11,12 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class CompanyResponse {
-    private long id;
+
+    private Long id;
+
     private String name;
     private User userId;
     private String location;
+
     private String documents;
 }

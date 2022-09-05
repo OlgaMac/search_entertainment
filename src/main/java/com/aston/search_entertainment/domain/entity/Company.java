@@ -26,7 +26,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "company")
-public class CompanyEntity {
+public class Company {
 
     @Id
     @Column(name = "id")

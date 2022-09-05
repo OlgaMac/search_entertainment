@@ -7,13 +7,13 @@ import com.aston.search_entertainment.domain.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
 
-    UserResponse toResponse(User userEntity);
+    UserResponse toResponse(User user);
 
     User fromRequest(UserRequest userRequest);
 
     User fromRequestUpdate(UserRequestUpdate userRequestUpdate);
-
 }
