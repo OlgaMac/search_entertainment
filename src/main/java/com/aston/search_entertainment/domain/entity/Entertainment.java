@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -21,10 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -42,28 +38,30 @@ public class Entertainment {
             parameters = {@Parameter(name = "sequence", value = "seq_entertainment_id")})
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @CreationTimestamp
+    private Timestamp date;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "location")
     private String location;
 
-    @Column(name = "text")
-    private String documents;
-
     @Column(name = "url")
     private String url;
 
-    //    @Column(name = "date")
-    @CreationTimestamp
-    private Timestamp date;
+    @Column(name = "text")
+    private String documents;
 
     @Column(name = "rating")
     private Double rating;
+
+    @Column(name = "active")
+    private boolean active;
 
     @OneToMany(mappedBy = "entertainment"
             , cascade = CascadeType.ALL)

@@ -14,7 +14,7 @@ public class CompanyFromRepoMapper {
     private final CompanyRepository companyRepository;
 
     @Named("getCompanyFromRepo")
-    public Company getUserFromRepo(Long id) {
+    public Company getCompanyFromRepo(Long id) {
         return companyRepository.findCompanyById(id);
     }
 

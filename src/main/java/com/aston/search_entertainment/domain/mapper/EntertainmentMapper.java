@@ -15,6 +15,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface EntertainmentMapper {
 
     @Mapping(source = "company_id", target = "company", qualifiedByName = "getCompanyFromRepo")
+    @Mapping(target = "active", constant = "true")
     Entertainment toEntertainment(EntertainmentRequest request);
 
     @InheritInverseConfiguration
