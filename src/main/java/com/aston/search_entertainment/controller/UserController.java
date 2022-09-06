@@ -2,6 +2,7 @@ package com.aston.search_entertainment.controller;
 
 import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
+import com.aston.search_entertainment.domain.dto.request.UserRequestUpdateRole;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
 import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.domain.mapper.UserMapper;
@@ -93,4 +94,10 @@ public class UserController {
         return userService.update(update);
 
     }
+    @ApiOperation("Обновление роли пользователя")
+    @PutMapping("/role")
+    public UserResponse updateRoleUser(@RequestBody UserRequestUpdateRole userRequestUpdateRole){
+        return userService.updateRole(userRequestUpdateRole);
+    }
+
 }
