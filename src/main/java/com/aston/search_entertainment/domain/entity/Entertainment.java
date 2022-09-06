@@ -5,22 +5,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Date;
+import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,28 +36,34 @@ public class Entertainment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_entertainment_id")
     @GenericGenerator(name = "seq_entertainment_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_entertainment_id")})
-    private long id;
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "company_id")
+    private Company company;
+
+    @CreationTimestamp
+    private Timestamp date;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "company_id")
-    private Company company_id;
-
     @Column(name = "location")
     private String location;
-
-    @Column(name = "text")
-    private String documents;
 
     @Column(name = "url")
     private String url;
 
-    @Column(name = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    @Column(name = "text")
+    private String documents;
 
     @Column(name = "rating")
     private Double rating;
+
+    @Column(name = "active")
+    private boolean active;
+
+    @OneToMany(mappedBy = "entertainment"
+            , cascade = CascadeType.ALL)
+    private List<Comment> comments;
 }

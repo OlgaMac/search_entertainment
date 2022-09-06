@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.mapstruct.Named;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 public class UserFromRepoMapper {
@@ -18,7 +20,8 @@ public class UserFromRepoMapper {
 
     @Named("getUserFromRepo")
     public User getUserFromRepo(Long id) {
-        return userRepository.findUserById(id);
+        Optional<User> user = userRepository.findById(id);
+        return user.get();
     }
 
     @Named("getEntertainmentFromRepo")

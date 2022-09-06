@@ -1,5 +1,6 @@
 package com.aston.search_entertainment.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 
 @Getter
@@ -50,4 +53,8 @@ public class Company {
 
     @Column(name = "documents")
     private String documents;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
+    private List<Entertainment> entertainments;
 }

@@ -2,3 +2,4 @@
 target/
 out/
 *.iml
+/src/main/resources/application-local.properties
