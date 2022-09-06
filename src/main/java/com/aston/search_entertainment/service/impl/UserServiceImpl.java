@@ -2,7 +2,6 @@ package com.aston.search_entertainment.service.impl;
 
 import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
-import com.aston.search_entertainment.domain.dto.request.UserRequestUpdateRole;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
 import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.domain.mapper.UserMapper;
@@ -63,11 +62,6 @@ public class UserServiceImpl implements UserService {
         } else {
             newUser.setEmail(user.getEmail());
         }
-        if (user.getPassword() == null) {
-            newUser.setPassword(newUser.getPassword());
-        } else {
-            newUser.setPassword(user.getPassword());
-        }
         if (user.getLastName() == null) {
             newUser.setLastName(newUser.getLastName());
         } else {
@@ -78,17 +72,6 @@ public class UserServiceImpl implements UserService {
         } else {
             newUser.setFirstName(user.getFirstName());
         }
-        userRepository.save(newUser);
-        return userMapper.toResponse(newUser);
-    }
-
-    @Override
-    @Transactional
-    public UserResponse updateRole(UserRequestUpdateRole updateRole) {
-        User user = userMapper.fromRequestUpdateRole(updateRole);
-        Optional<User> userOptional = userRepository.findById(user.getId());
-        User newUser = userOptional.get();
-        newUser.setRole(user.getRole());
         userRepository.save(newUser);
         return userMapper.toResponse(newUser);
     }
