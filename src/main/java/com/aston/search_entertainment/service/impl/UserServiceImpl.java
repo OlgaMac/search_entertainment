@@ -57,21 +57,13 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.fromRequestUpdate(update);
         Optional<User> userOptional = userRepository.findById(user.getId());
         User newUser = userOptional.get();
-        if (user.getEmail() == null) {
-            newUser.setEmail(newUser.getEmail());
-        } else {
-            newUser.setEmail(user.getEmail());
-        }
-        if (user.getLastName() == null) {
-            newUser.setLastName(newUser.getLastName());
-        } else {
-            newUser.setLastName(user.getLastName());
-        }
-        if (user.getFirstName() == null) {
-            newUser.setFirstName(newUser.getFirstName());
-        } else {
-            newUser.setFirstName(user.getFirstName());
-        }
+
+        newUser.setEmail(user.getEmail());
+
+        newUser.setLastName(user.getLastName());
+
+        newUser.setFirstName(user.getFirstName());
+
         userRepository.save(newUser);
         return userMapper.toResponse(newUser);
     }
