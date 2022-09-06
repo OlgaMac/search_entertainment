@@ -2,6 +2,7 @@ package com.aston.search_entertainment.service;
 
 import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
+import com.aston.search_entertainment.domain.dto.request.UserRequestUpdateRole;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
 import com.aston.search_entertainment.domain.entity.User;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -17,4 +18,5 @@ public interface UserService {
     UserResponse save(UserRequest userRequest);
     void deleteById(Long id);
     UserResponse update(UserRequestUpdate update);
+    UserResponse updateRole(UserRequestUpdateRole updateRole);
 }
