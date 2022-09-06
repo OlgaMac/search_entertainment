@@ -16,6 +16,7 @@ public class CompanyRequestUpdate {
 
     private User userId;
 
+
     private String location;
 
     private String documents;

@@ -1,4 +1,6 @@
 package com.aston.search_entertainment.domain.dto.response;
+
+import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

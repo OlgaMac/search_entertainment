@@ -17,7 +17,6 @@ public class CompanyRequest {
     private String name;
 
     private User userId;
-
     private String location;
 
     private String documents;

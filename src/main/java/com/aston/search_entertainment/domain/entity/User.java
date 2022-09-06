@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -19,7 +20,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import java.time.LocalDate;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Getter
@@ -36,7 +37,6 @@ public class User {
     @GenericGenerator(name = "seq_users_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_users_id")})
     private Long id;
-
     @Column(name = "email")
     @Email
     private String email;
@@ -44,8 +44,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "role")
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @Column(name = "first_name")
@@ -54,8 +54,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "created")
-    private LocalDate created;
+    @CreationTimestamp
+    private Timestamp created;
 
     @Column(name = "enabled")
     private boolean enable;

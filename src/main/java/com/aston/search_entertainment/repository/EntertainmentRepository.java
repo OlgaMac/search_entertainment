@@ -1,6 +1,7 @@
 package com.aston.search_entertainment.repository;
 
 import com.aston.search_entertainment.domain.entity.Entertainment;
+import org.mapstruct.Named;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
