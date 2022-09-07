@@ -70,4 +70,8 @@ public class Comment {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @Column(nullable = false, name = "updated")
     private LocalDateTime updated;
+
+    @NotNull
+    @Column(nullable = false, name = "rating_counter")
+    private Long rating_counter;
 }

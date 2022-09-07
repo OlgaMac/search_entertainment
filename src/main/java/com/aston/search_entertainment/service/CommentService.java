@@ -23,4 +23,12 @@ public interface CommentService {
 
     void deleteCommentById(Long id);
 
+    CommentResponse setRating(Long id, CommentRequest commentRequest);
+
+    CommentResponse setRatingCounter(CommentRequest commentRequest);
+
+    CommentResponse getRatingCounter(Long id);
+    CommentResponse getRating(Long id);
+
+    double calculateRating(Double rating, Long id);
 }

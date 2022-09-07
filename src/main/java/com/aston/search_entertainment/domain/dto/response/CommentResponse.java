@@ -20,4 +20,6 @@ public class CommentResponse {
     private Long entertainment_id;
 
     private Double rating;
+
+    private Long rating_counter;
 }

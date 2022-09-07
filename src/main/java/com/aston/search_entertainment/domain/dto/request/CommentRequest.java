@@ -19,4 +19,5 @@ public class CommentRequest {
 
     private Double rating;
 
+    private Long rating_counter;
 }

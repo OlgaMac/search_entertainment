@@ -57,4 +57,32 @@ public class CommentServiceImpl implements CommentService {
     public void deleteCommentById(Long id) {
         commentRepository.deleteById(id);
     }
+
+
+    @Override
+    public CommentResponse setRating(Long id, CommentRequest commentRequest) {
+        commentRepository.setRatingById(calculateRating(commentRequest.getRating(),
+                commentRequest.getRating_counter()), id);
+        return commentMapper.toCommentResponse(commentRepository.getCommentById(id));
+    }
+
+    @Override
+    public CommentResponse setRatingCounter(CommentRequest commentRequest) {
+        commentRepository.setRatingById(commentRequest.getRating(), commentRequest.getUser_id());
+        return CommentResponse.builder().build();
+    }
+
+    @Override
+    public CommentResponse getRatingCounter(Long id) {
+        return commentMapper.toCommentResponse(commentRepository.getRatingCounter(id));
+    }
+
+    @Override
+    public CommentResponse getRating(Long id) {
+        return commentMapper.toCommentResponse(commentRepository.getRatingById(id));
+    }
+    @Override
+    public double calculateRating(Double rating, Long rating_counter) {
+        return (rating / rating_counter);
+    }
 }
