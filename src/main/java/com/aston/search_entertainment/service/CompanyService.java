@@ -16,6 +16,6 @@ public interface CompanyService {
     CompanyResponse findById(long id) throws ChangeSetPersister.NotFoundException;
     CompanyResponse save(CompanyRequest companyRequest);
     void deleteById(Long id);
-    CompanyResponse update(CompanyRequestUpdate companyRequestUpdate);
+    CompanyResponse update(Long id, CompanyRequestUpdate companyRequestUpdate);
 
 }
