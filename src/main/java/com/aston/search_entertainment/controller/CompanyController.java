@@ -7,6 +7,7 @@ import com.aston.search_entertainment.service.CompanyService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping(value = "/company")
 @RequiredArgsConstructor
@@ -31,34 +33,34 @@ public class CompanyController {
     @GetMapping
     List<CompanyResponse> getAllCompany() {
         log.info("get all comments");
-        return companyService.getListOfCompanyDto();
+        return companyService.findAll();
     }
 
     @ApiOperation(value = "Get comment by id")
     @GetMapping({"/id"})
-    CompanyResponse getCompanyById(@PathVariable(value = "id") Long id) {
+    CompanyResponse getCompanyById(@PathVariable(value = "id") Long id) throws ChangeSetPersister.NotFoundException {
         log.info("get company by id");
-        return companyService.getById(id);
+        return companyService.findById(id);
     }
 
     @ApiOperation(value = "Create comment")
     @PostMapping
     CompanyResponse createCompany(@RequestBody CompanyRequest companyRequest) {
-        log.info("Receiving request for creating comment: {}", companyRequest);
-        return companyService.createCompany(companyRequest);
+        log.info("Receiving request for creating company: {}", companyRequest);
+        return companyService.save(companyRequest);
     }
 
     @ApiOperation(value = "Edit company")
     @PutMapping
-    CompanyResponse editCompany(@PathVariable Long id, @RequestBody CompanyRequestUpdate companyRequestUpdate) {
-        log.info("Receiving request for edit company with id: {}", id);
-        return companyService.editCompany(id, companyRequestUpdate);
+    CompanyResponse editCompany(@RequestBody CompanyRequestUpdate companyRequestUpdate) {
+        log.info("Receiving request for edit company with id: {}", companyRequestUpdate);
+        return companyService.update(companyRequestUpdate);
     }
 
     @DeleteMapping({"/id"})
     ResponseEntity<String> deleteCompanyById(@PathVariable(value = "id") Long id) {
         log.info("Receiving request for deleting comment with id: {}", id);
-        companyService.deleteCompanyById(id);
+        companyService.deleteById(id);
         return ResponseEntity.ok("Comment delete successfully");
     }
 }

@@ -9,12 +9,15 @@ import com.aston.search_entertainment.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
@@ -22,27 +25,33 @@ public class CompanyServiceImpl implements CompanyService {
     private final CompanyMapper companyMapper;
 
     @Override
-    public List<CompanyResponse> getListOfCompanyDto() {
+    public List<CompanyResponse> findAll() {
+        return companyRepository.findAll()
+                .stream()
+                .map(companyMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public CompanyResponse findById(long id) {
+        return companyRepository.findById(id)
+                .stream()
+                .map(companyMapper::toResponse)
+                .findAny().get();
+    }
+
+    @Override
+    public CompanyResponse save(CompanyRequest companyRequest) {
         return null;
     }
 
     @Override
-    public CompanyResponse createCompany(CompanyRequest companyRequest) {
-        return null;
+    public void deleteById(Long id) {
+
     }
 
     @Override
-    public CompanyResponse editCompany(Long id, CompanyRequestUpdate companyRequestUpdate) {
+    public CompanyResponse update(CompanyRequestUpdate companyRequestUpdate) {
         return null;
-    }
-
-    @Override
-    public CompanyResponse getById(Long id) {
-        return null;
-    }
-
-    @Override
-    public void deleteCompanyById(Long id) {
-        companyRepository.deleteById(id);
     }
 }
