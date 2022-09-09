@@ -7,9 +7,7 @@ import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.domain.mapper.UserMapper;
 import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,8 +28,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-       List<User> users=userRepository.findAll();
-       return users;
+        List<User> users = userRepository.findAll();
+        return users;
     }
 
     @Override
@@ -51,20 +49,23 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void deleteById(Long id) {
-         userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
+
     @Transactional
-    public UserResponse update (UserRequestUpdate update){
+    public UserResponse update(UserRequestUpdate update) {
         User user = userMapper.fromRequestUpdate(update);
         Optional<User> userOptional = userRepository.findById(user.getId());
         User newUser = userOptional.get();
+
         newUser.setEmail(user.getEmail());
-        newUser.setPassword(user.getPassword());
+
         newUser.setLastName(user.getLastName());
+
         newUser.setFirstName(user.getFirstName());
-        newUser.setRole(user.getRole());
-       userRepository.save(newUser);
-       return userMapper.toResponse(newUser);
+
+        userRepository.save(newUser);
+        return userMapper.toResponse(newUser);
     }
 
 }
