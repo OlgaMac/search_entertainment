@@ -11,7 +11,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
         , nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface CompanyMapper {
 
-    CompanyResponse toResponse(CompanyResponse company);
+    CompanyResponse toResponse(Company company);
 
     Company fromRequest(CompanyRequest companyRequest);
 

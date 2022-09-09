@@ -26,9 +26,9 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<CompanyResponse> findAll() {
-        return companyRepository.findAll()
-                .stream()
-                .map(companyMapper::toResponse)
+      return companyRepository.findAll()
+              .stream()
+              .map(companyMapper::toResponse)
                 .collect(Collectors.toList());
     }
 
