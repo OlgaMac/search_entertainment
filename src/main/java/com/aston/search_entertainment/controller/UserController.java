@@ -65,7 +65,6 @@ public class UserController {
         }
         return new ResponseEntity<>(result, OK);
     }
-
     @ApiOperation(value = "Создание нового пользователя")
     @PostMapping()
     public UserResponse createUser(@RequestBody UserRequest userRequest) {
