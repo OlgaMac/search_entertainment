@@ -1,7 +1,6 @@
 package com.aston.search_entertainment.domain.mapper;
 
 import com.aston.search_entertainment.domain.dto.request.CompanyRequest;
-import com.aston.search_entertainment.domain.dto.request.CompanyRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.CompanyResponse;
 import com.aston.search_entertainment.domain.entity.Company;
 import org.mapstruct.Mapper;
@@ -15,5 +14,4 @@ public interface CompanyMapper {
 
     Company fromRequest(CompanyRequest companyRequest);
 
-    Company fromRequestUpdate(CompanyRequestUpdate companyRequestUpdate);
 }
