@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequestMapping(value = "/company")
 @RequiredArgsConstructor
@@ -51,10 +50,10 @@ public class CompanyController {
     }
 
     @ApiOperation(value = "Edit company")
-    @PutMapping
-    CompanyResponse editCompany(@RequestBody CompanyRequestUpdate companyRequestUpdate) {
+    @PutMapping("{id}")
+    CompanyResponse editCompany(@PathVariable Long id, @RequestBody CompanyRequestUpdate companyRequestUpdate) {
         log.info("Receiving request for edit company with id: {}", companyRequestUpdate);
-        return companyService.update(companyRequestUpdate);
+        return companyService.update(id, companyRequestUpdate);
     }
 
     @DeleteMapping({"/id"})
