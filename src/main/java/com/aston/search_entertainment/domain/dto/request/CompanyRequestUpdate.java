@@ -10,6 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CompanyRequestUpdate {
 
+    private Long id;
+
     private String name;
 
     private String location;
