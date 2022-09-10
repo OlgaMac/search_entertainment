@@ -10,6 +10,7 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
 
     Company getCompanyById(Long id);
 
+
     @Modifying
     @Transactional
     @Query("update Company e set e.name = ?1,e.link = ?2,e.location = ?3,e.documents = ?4 where e.id = ?5")

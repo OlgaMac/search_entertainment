@@ -14,7 +14,7 @@ public class CompanyResponse {
 
     private Long id;
     private String name;
-    private User userId;
+    private Long userId;
     private String location;
     private String documents;
 }

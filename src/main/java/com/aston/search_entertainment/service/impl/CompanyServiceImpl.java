@@ -62,6 +62,6 @@ public class CompanyServiceImpl implements CompanyService {
                 companyRequestUpdate.getName(),
                 id);
 
-        return companyMapper.toResponse(companyRepository.getCompanyBy(id));
+        return companyMapper.toResponse(companyRepository.getCompanyById(id));
     }
 }
