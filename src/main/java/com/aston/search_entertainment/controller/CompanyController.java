@@ -49,13 +49,13 @@ public class CompanyController {
     }
 
     @ApiOperation(value = "Edit company")
-    @PutMapping
+    @PutMapping()
     CompanyResponse editCompany(@RequestBody CompanyRequestUpdate companyRequestUpdate) {
         log.info("Receiving request for edit company with id: {}", companyRequestUpdate);
         return companyService.update(companyRequestUpdate.getId(), companyRequestUpdate);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping({"/{id}"})
     ResponseEntity<String> deleteCompanyById(@PathVariable(value = "id") Long id) {
         log.info("Receiving request for deleting company with id: {}", id);
         companyService.deleteById(id);

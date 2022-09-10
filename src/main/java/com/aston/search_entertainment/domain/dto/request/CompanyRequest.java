@@ -1,6 +1,5 @@
 package com.aston.search_entertainment.domain.dto.request;
 
-import com.aston.search_entertainment.domain.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,8 +11,9 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CompanyRequest {
 
+    private Long id;
     private String name;
-    private User userId;
+    private Long userId;
     private String location;
     private String documents;
 }
