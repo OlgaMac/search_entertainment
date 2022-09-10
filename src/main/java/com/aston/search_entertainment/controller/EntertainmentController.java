@@ -53,10 +53,10 @@ public class EntertainmentController {
     }
 
     @ApiOperation(value = "Edit entertainment")
-    @PutMapping("/{id}")
-    EntertainmentResponse editComment(@PathVariable Long id, @RequestBody EntertainmentRequestUpdate entertainmentRequest) {
+    @PutMapping()
+    EntertainmentResponse editComment(@RequestBody EntertainmentRequestUpdate entertainmentRequest) {
 
-        return entertainmentService.editEntertainment(id, entertainmentRequest);
+        return entertainmentService.editEntertainment(entertainmentRequest.getId(), entertainmentRequest);
     }
 
     @DeleteMapping("/{id}")

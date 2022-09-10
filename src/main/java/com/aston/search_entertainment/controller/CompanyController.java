@@ -28,6 +28,7 @@ public class CompanyController {
 
     private final CompanyService companyService;
 
+
     @ApiOperation(value = "Get all company")
     @GetMapping
     List<CompanyResponse> getAllCompany() {
@@ -36,7 +37,7 @@ public class CompanyController {
     }
 
     @ApiOperation(value = "Get comment by id")
-    @GetMapping({"/id"})
+    @GetMapping("/{id}")
     CompanyResponse getCompanyById(@PathVariable(value = "id") Long id) throws ChangeSetPersister.NotFoundException {
         log.info("get company by id");
         return companyService.findById(id);
@@ -50,13 +51,13 @@ public class CompanyController {
     }
 
     @ApiOperation(value = "Edit company")
-    @PutMapping("{id}")
-    CompanyResponse editCompany(@PathVariable Long id, @RequestBody CompanyRequestUpdate companyRequestUpdate) {
+    @PutMapping()
+    CompanyResponse editCompany(@RequestBody CompanyRequestUpdate companyRequestUpdate) {
         log.info("Receiving request for edit company with id: {}", companyRequestUpdate);
-        return companyService.update(id, companyRequestUpdate);
+        return companyService.update(companyRequestUpdate.getId(), companyRequestUpdate);
     }
 
-    @DeleteMapping({"/id"})
+    @DeleteMapping({"/{id}"})
     ResponseEntity<String> deleteCompanyById(@PathVariable(value = "id") Long id) {
         log.info("Receiving request for deleting comment with id: {}", id);
         companyService.deleteById(id);
