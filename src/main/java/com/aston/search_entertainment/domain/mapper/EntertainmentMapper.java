@@ -10,12 +10,9 @@ import org.mapstruct.Mapping;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring",
-        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-        uses = CompanyFromRepoMapper.class)
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface EntertainmentMapper {
 
-    @Mapping(source = "company_id", target = "company", qualifiedByName = "getCompanyFromRepo")
-    @Mapping(target = "active", constant = "true")
     Entertainment toEntertainment(EntertainmentRequest request);
 
     @InheritInverseConfiguration

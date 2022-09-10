@@ -60,7 +60,4 @@ public class User {
     @Column(name = "enabled")
     private boolean enable;
 
-    @OneToMany(mappedBy = "userId"
-            , cascade = CascadeType.ALL)
-    private List<Company> companies;
 }
