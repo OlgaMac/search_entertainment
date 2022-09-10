@@ -55,7 +55,7 @@ public class CompanyController {
         return companyService.update(companyRequestUpdate.getId(), companyRequestUpdate);
     }
 
-    @DeleteMapping({"/{id}"})
+    @DeleteMapping("/{id}")
     ResponseEntity<String> deleteCompanyById(@PathVariable(value = "id") Long id) {
         log.info("Receiving request for deleting company with id: {}", id);
         companyService.deleteById(id);
