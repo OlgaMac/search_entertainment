@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping(value = "/comments")
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/comments")
 @Slf4j
 public class CommentController {
 
@@ -29,34 +29,34 @@ public class CommentController {
 
     @ApiOperation(value = "Get all comments")
     @GetMapping
-    List<CommentResponse> getAllComments() {
+    ResponseEntity<List<CommentResponse>> getAllComments() {
         log.info("get all comments");
-        return commentService.getListOfCommentDto();
+        return ResponseEntity.ok(commentService.getListOfCommentDto());
     }
 
     @ApiOperation(value = "Get comment by id")
-    @GetMapping({"/id"})
-    CommentResponse getCommentById(@PathVariable(value = "id") Long id) {
+    @GetMapping("/{id}")
+    ResponseEntity<CommentResponse> getCommentById(@PathVariable Long id) {
         log.info("get comment by id");
-        return commentService.getById(id);
+        return ResponseEntity.ok(commentService.getById(id));
     }
 
     @ApiOperation(value = "Create comment")
     @PostMapping
-    CommentResponse createComment(@RequestBody CommentRequest commentRequest) {
+    ResponseEntity<CommentResponse> createComment(@RequestBody CommentRequest commentRequest) {
         log.info("Receiving request for creating comment: {}", commentRequest);
-        return commentService.createComment(commentRequest);
+        return ResponseEntity.ok(commentService.createComment(commentRequest));
     }
 
     @ApiOperation(value = "Edit comment")
-    @PutMapping
-    CommentResponse editComment(@PathVariable Long id, @RequestBody CommentRequestForEdit commentRequest) {
+    @PutMapping("/{id}")
+    ResponseEntity<CommentResponse> editComment(@PathVariable Long id, @RequestBody CommentRequestForEdit commentRequest) {
         log.info("Receiving request for edit comment with id: {}", id);
-        return commentService.editComment(id, commentRequest);
+        return ResponseEntity.ok(commentService.editComment(id, commentRequest));
     }
 
-    @DeleteMapping({"/id"})
-    ResponseEntity<String> deleteCommentById(@PathVariable(value = "id") Long id) {
+    @DeleteMapping("/{id}")
+    ResponseEntity<String> deleteCommentById(@PathVariable Long id) {
         log.info("Receiving request for deleting comment with id: {}", id);
         commentService.deleteCommentById(id);
         return ResponseEntity.ok("Comment delete successfully");
@@ -64,3 +64,5 @@ public class CommentController {
 
 
 }
+
+
