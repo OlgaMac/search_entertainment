@@ -34,7 +34,7 @@ public class EntityUserGenerator {
                 .role("USER")
                 .firstName("Ignat")
                 .lastName("Petrov")
-                .created(LocalDate.now())
+                .created(LocalDateTime.now())
                 .build();
         return userResponse;
 
