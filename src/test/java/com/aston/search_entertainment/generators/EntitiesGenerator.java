@@ -24,7 +24,7 @@ public class EntitiesGenerator {
         comment.setCreated(Timestamp.valueOf(LocalDateTime.now()));
         comment.setUpdated(Timestamp.valueOf(LocalDateTime.now()));
         comment.setText("test-text");
-        comment.setUserEntity(user);
+        comment.setUser(user);
         comment.setEntertainment(generateEntertainment());
         comment.setRating(5.0);
 
