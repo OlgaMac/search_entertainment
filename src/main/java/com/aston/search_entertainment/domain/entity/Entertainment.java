@@ -38,10 +38,6 @@ public class Entertainment {
             parameters = {@Parameter(name = "sequence", value = "seq_entertainment_id")})
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "company_id")
-    private Company company;
-
     @CreationTimestamp
     private Timestamp date;
 
