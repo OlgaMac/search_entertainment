@@ -12,11 +12,11 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
         uses = UserFromRepoMapper.class)
 public interface CommentMapper {
 
-    @Mapping(source = "user_id", target = "user", qualifiedByName = "getUserFromRepo")
+    @Mapping(source = "user_id", target = "userEntity", qualifiedByName = "getUserFromRepo")
     @Mapping(source = "entertainment_id", target = "entertainment", qualifiedByName = "getEntertainmentFromRepo")
     Comment toComment(CommentRequest request);
 
-    @Mapping(target = "user_id", expression = "java(comment.getUser().getId())")
+    @Mapping(target = "user_id", expression = "java(comment.getUserEntity().getId())")
     @Mapping(target = "entertainment_id", expression = "java(comment.getEntertainment().getId())")
     CommentResponse toCommentResponse(Comment comment);
 

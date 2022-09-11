@@ -6,13 +6,14 @@ import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.entity.Entertainment;
 import com.aston.search_entertainment.domain.entity.Role;
-import com.aston.search_entertainment.domain.entity.User;
+import com.aston.search_entertainment.domain.entity.UserEntity;
+
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class EntitiesGenerator {
 
-    public static User user = generateUser();
+    public static UserEntity user = generateUser();
 
     private static final Long id = 1L;
 
@@ -23,7 +24,7 @@ public class EntitiesGenerator {
         comment.setCreated(Timestamp.valueOf(LocalDateTime.now()));
         comment.setUpdated(Timestamp.valueOf(LocalDateTime.now()));
         comment.setText("test-text");
-        comment.setUser(user);
+        comment.setUserEntity(user);
         comment.setEntertainment(generateEntertainment());
         comment.setRating(5.0);
 
@@ -75,8 +76,8 @@ public class EntitiesGenerator {
         return company;
     }
 
-    private static User generateUser() {
-        User user = User.builder()
+    private static UserEntity generateUser() {
+        UserEntity user = UserEntity.builder()
                 .id(id)
                 .email("mail@mail.com")
                 .password("qwerty")
@@ -84,7 +85,7 @@ public class EntitiesGenerator {
                 .firstName("Ivan")
                 .lastName("Ivanov")
                 .created(Timestamp.valueOf(LocalDateTime.now()))
-                .enable(true)
+                .enabled(true)
                 .build();
 
         return user;
