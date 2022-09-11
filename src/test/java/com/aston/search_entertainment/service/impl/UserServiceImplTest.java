@@ -1,4 +1,4 @@
-package service.impl;
+package com.aston.search_entertainment.service.impl;
 
 import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.repository.UserRepository;
