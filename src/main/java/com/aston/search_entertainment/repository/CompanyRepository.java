@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 
-    Company getCompanyBy (Long id);
+    Company getCompanyById (Long id);
     Company findCompanyById(Long id);
 
     @Modifying

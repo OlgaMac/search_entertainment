@@ -13,8 +13,17 @@ import lombok.experimental.Accessors;
 public class CompanyResponse {
 
     private Long id;
+
     private String name;
-    private User userId;
-    private String location;
+
     private String documents;
+
+    private String location;
+
+    private String link;
+
+    private Long userId;
+
+    private boolean active;
+
 }

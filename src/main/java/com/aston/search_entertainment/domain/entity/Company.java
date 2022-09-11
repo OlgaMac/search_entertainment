@@ -1,6 +1,5 @@
 package com.aston.search_entertainment.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,11 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.List;
-
 
 @Getter
 @Setter
@@ -41,20 +37,20 @@ public class Company {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "link")
-    private String link;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User userId;
+    @Column(name = "documents")
+    private String documents;
 
     @Column(name = "location")
     private String location;
 
-    @Column(name = "documents")
-    private String documents;
+    @Column(name = "link")
+    private String link;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "company")
-    private List<Entertainment> entertainments;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User userId;
+
+    @Column(name = "active")
+    private boolean active;
+
 }

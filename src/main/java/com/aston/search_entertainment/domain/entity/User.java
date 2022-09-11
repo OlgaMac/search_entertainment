@@ -18,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import java.sql.Timestamp;
@@ -60,7 +61,8 @@ public class User {
     @Column(name = "enabled")
     private boolean enable;
 
-    @OneToMany(mappedBy = "userId"
+    @OneToOne(mappedBy = "userId"
             , cascade = CascadeType.ALL)
-    private List<Company> companies;
+    private Company company;
+
 }
