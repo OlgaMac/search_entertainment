@@ -59,7 +59,7 @@ class EntertainmentServiceImplTest {
     @Test
     void getById() {
         Mockito
-                .when(entertainmentRepository.findEntertainmentById(1L))
+                .when(entertainmentRepository.getEntertainmentById(1L))
                 .thenReturn(entertainment);
 
         Mockito
@@ -108,7 +108,7 @@ class EntertainmentServiceImplTest {
     @Test
     void editComment() {
         Mockito
-                .when(entertainmentRepository.findEntertainmentById(1L))
+                .when(entertainmentRepository.getEntertainmentById(1L))
                 .thenReturn(entertainment);
 
         entertainmentService.editEntertainment(1L, entertainmentRequestUpdate);
