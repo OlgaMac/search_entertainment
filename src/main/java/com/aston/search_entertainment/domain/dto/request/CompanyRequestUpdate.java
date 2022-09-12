@@ -13,6 +13,8 @@ public class CompanyRequestUpdate {
 
     private String name;
 
+    private String link;
+
     private String location;
 
     private String documents;

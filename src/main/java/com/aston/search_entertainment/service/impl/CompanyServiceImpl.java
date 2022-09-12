@@ -62,10 +62,11 @@ public class CompanyServiceImpl implements CompanyService {
     @Transactional
     @Override
     public CompanyResponse update(Long id, CompanyRequestUpdate companyRequestUpdate) {
-        companyRepository.setCompanyInfoById(companyRequestUpdate.getLocation(),
-                companyRequestUpdate.getDocuments(),
-                companyRequestUpdate.getLocation(),
+        companyRepository.setCompanyInfoById(
                 companyRequestUpdate.getName(),
+                companyRequestUpdate.getLink(),
+                companyRequestUpdate.getLocation(),
+                companyRequestUpdate.getDocuments(),
                 id);
 
         return companyMapper.toResponse(companyRepository.getCompanyById(id));

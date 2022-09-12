@@ -53,6 +53,7 @@ public class EntertainmentServiceImpl implements EntertainmentService {
                 entertainmentRequest.getUrl(),
                 id);
 
+
         return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.getEntertainmentById(id));
     }
 

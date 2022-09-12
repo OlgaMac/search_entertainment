@@ -1,5 +1,6 @@
 package com.aston.search_entertainment.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -62,7 +63,7 @@ public class User {
 
     @Column(name = "enabled")
     private boolean enable;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Company> companies;

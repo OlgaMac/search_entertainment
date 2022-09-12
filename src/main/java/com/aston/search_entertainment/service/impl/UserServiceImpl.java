@@ -54,18 +54,18 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     public UserResponse update(UserRequestUpdate update) {
-        User user = userMapper.fromRequestUpdate(update);
-        Optional<User> userOptional = userRepository.findById(user.getId());
-        User newUser = userOptional.get();
 
-        newUser.setEmail(user.getEmail());
+        User user = userRepository.findById(update.getId()).get();
 
-        newUser.setLastName(user.getLastName());
+        user.setEmail(update.getEmail());
 
-        newUser.setFirstName(user.getFirstName());
+        user.setLastName(user.getLastName());
 
-        userRepository.save(newUser);
-        return userMapper.toResponse(newUser);
+        user.setFirstName(user.getFirstName());
+
+        userRepository.save(user);
+
+        return userMapper.toResponse(user);
     }
 
 }
