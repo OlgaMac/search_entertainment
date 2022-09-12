@@ -28,8 +28,8 @@ public interface CompanyMapper {
     Company fromRequest(CompanyRequest companyRequest);
 
     @Named("getIdFromUser")
-    default Long map(User value){
-        return value.getId();
+    default Long getIdFromUser(User user){
+        return user.getId();
     }
 
     Company fromRequestUpdate(CompanyRequestUpdate companyRequestUpdate);

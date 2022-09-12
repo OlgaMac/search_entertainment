@@ -38,25 +38,27 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_company_id")
     @GenericGenerator(name = "seq_company_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_company_id")})
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "link")
-    private String link;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User userId;
+    @Column(name = "documents")
+    private String documents;
 
     @Column(name = "location")
     private String location;
 
-    @Column(name = "documents")
-    private String documents;
+    @Column(name = "link")
+    private String link;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "company")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User userId;
+
+    @Column(name = "active")
+    private Boolean active;
+
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Entertainment> entertainments;
 }
