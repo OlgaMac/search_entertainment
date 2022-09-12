@@ -1,19 +1,17 @@
 package com.aston.search_entertainment.domain.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
-@AllArgsConstructor
-public class UserRequest {
+public class RegistrationRequest {
 
     private String email;
 
@@ -22,8 +20,4 @@ public class UserRequest {
     private String firstName;
 
     private String lastName;
-
-    private String role;
-
-    private boolean enable;
 }

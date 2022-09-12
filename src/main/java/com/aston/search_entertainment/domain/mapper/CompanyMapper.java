@@ -5,7 +5,7 @@ import com.aston.search_entertainment.domain.dto.request.CompanyRequest;
 import com.aston.search_entertainment.domain.dto.request.CompanyRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.CompanyResponse;
 import com.aston.search_entertainment.domain.entity.Company;
-import com.aston.search_entertainment.domain.entity.User;
+import com.aston.search_entertainment.domain.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -24,7 +24,7 @@ public interface CompanyMapper {
     Company fromRequest(CompanyRequest companyRequest);
 
     @Named("getIdFromUser")
-    default Long getIdFromUser(User user) {
+    default Long getIdFromUser(UserEntity user) {
         return user.getId();
     }
 

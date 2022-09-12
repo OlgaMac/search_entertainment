@@ -7,13 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -34,7 +37,9 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Builder
-public class User {
+@Accessors(chain = true)
+@EntityListeners(AuditingEntityListener.class)
+public class UserEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_users_id")
@@ -62,7 +67,8 @@ public class User {
     private Timestamp created;
 
     @Column(name = "enabled")
-    private boolean enable;
+    private Boolean enabled;
+
     @JsonIgnore
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL, fetch = FetchType.EAGER)

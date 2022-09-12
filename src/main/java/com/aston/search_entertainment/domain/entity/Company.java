@@ -43,18 +43,18 @@ public class Company {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "documents")
-    private String documents;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserEntity userId;
 
     @Column(name = "location")
     private String location;
 
+    @Column(name = "documents")
+    private String documents;
+
     @Column(name = "link")
     private String link;
-
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
-    private User userId;
 
     @Column(name = "active")
     private Boolean active;

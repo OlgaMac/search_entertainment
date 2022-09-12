@@ -1,19 +1,19 @@
 databaseChangeLog:
   - changeSet:
-      id: 1.1.0
+      id: 1.4.0
       author: olga.makeeva
       changes:
         - createSequence:
             dataType:  BIGINT
             incrementBy:  1
-            sequenceName:  seq_company_id
+            sequenceName:  seq_confirmation_tokens_id
             startValue:  1
   - changeSet:
-      id: 1.1.1
+      id: 1.4.1
       author: olga.makeeva
       changes:
         - createTable:
-            tableName: company
+            tableName: confirmation_tokens
             columns:
               - column:
                   name: id
@@ -21,32 +21,24 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
-                  name: name
+                  name: token
                   type: VARCHAR(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: created
+                  type: TIMESTAMP
                   constraints:
                     nullable: false
               - column:
-                  name: documents
-                  type: VARCHAR(500)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: location
-                  type: VARCHAR(255)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: link
-                  type: VARCHAR(255)
+                  name: expired
+                  type: TIMESTAMP
                   constraints:
                     nullable: false
               - column:
                   name: user_id
                   type: BIGINT
                   constraints:
-                    nullable: false
-              - column:
-                  name: active
-                  type: BOOLEAN
-                  constraints:
+                    unique: true
                     nullable: false

@@ -1,16 +1,12 @@
 package com.aston.search_entertainment.controller;
 
 
-import com.aston.search_entertainment.domain.dto.request.CommentRequestForEdit;
 import com.aston.search_entertainment.domain.dto.request.EntertainmentRequest;
 import com.aston.search_entertainment.domain.dto.request.EntertainmentRequestUpdate;
-import com.aston.search_entertainment.domain.dto.response.CommentResponse;
-
 import com.aston.search_entertainment.domain.dto.response.EntertainmentResponse;
 import com.aston.search_entertainment.service.EntertainmentService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,6 +61,4 @@ public class EntertainmentController {
         entertainmentService.deleteEntertainmentById(id);
         return ResponseEntity.ok("Entertainment delete successfully");
     }
-
-
 }
