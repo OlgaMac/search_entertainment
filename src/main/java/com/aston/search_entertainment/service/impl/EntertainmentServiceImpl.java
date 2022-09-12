@@ -35,14 +35,13 @@ public class EntertainmentServiceImpl implements EntertainmentService {
 
     @Override
     public EntertainmentResponse getById(Long id) {
-        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.findEntertainmentById(id));
+        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.getEntertainmentById(id));
     }
 
     @Override
     public EntertainmentResponse createEntertainment(EntertainmentRequest entertainmentRequest) {
         Entertainment entertainment = entertainmentMapper.toEntertainment(entertainmentRequest);
         entertainmentRepository.save(entertainment);
-
         return entertainmentMapper.toEntertainmentResponse(entertainment);
     }
 
@@ -53,7 +52,7 @@ public class EntertainmentServiceImpl implements EntertainmentService {
                 entertainmentRequest.getUrl(),
                 id);
 
-        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.findEntertainmentById(id));
+        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.getEntertainmentById(id));
     }
 
     @Override

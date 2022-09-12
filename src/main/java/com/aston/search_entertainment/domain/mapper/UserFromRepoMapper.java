@@ -26,6 +26,6 @@ public class UserFromRepoMapper {
 
     @Named("getEntertainmentFromRepo")
     public Entertainment getEntertainmentFromRepo(Long id) {
-        return entertainmentRepository.findEntertainmentById(id);
+        return entertainmentRepository.getEntertainmentById(id);
     }
 }

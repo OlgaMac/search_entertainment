@@ -1,6 +1,6 @@
 package com.aston.search_entertainment.domain.dto.request;
 
-import com.aston.search_entertainment.domain.entity.UserEntity;
+import com.aston.search_entertainment.domain.entity.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,9 +13,6 @@ public class CompanyRequestUpdate {
     private long id;
 
     private String name;
-
-    private UserEntity userId;
-
 
     private String location;
 
