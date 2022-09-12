@@ -55,7 +55,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponse update(UserRequestUpdate update) {
 
-
         User user = userRepository.findById(update.getId()).get();
 
         user.setEmail(update.getEmail());
