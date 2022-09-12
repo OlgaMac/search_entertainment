@@ -38,7 +38,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_company_id")
     @GenericGenerator(name = "seq_company_id", strategy = "sequence",
             parameters = {@Parameter(name = "sequence", value = "seq_company_id")})
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -53,7 +53,12 @@ public class Company {
     @Column(name = "documents")
     private String documents;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "company")
+    @Column(name = "link")
+    private String link;
+
+    @Column(name = "active")
+    private Boolean active;
+
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Entertainment> entertainments;
 }

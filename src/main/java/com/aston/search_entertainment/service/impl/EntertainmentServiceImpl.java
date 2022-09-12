@@ -8,6 +8,7 @@ import com.aston.search_entertainment.domain.dto.response.EntertainmentResponse;
 import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.entity.Entertainment;
 import com.aston.search_entertainment.domain.mapper.EntertainmentMapper;
+import com.aston.search_entertainment.repository.CommentRepository;
 import com.aston.search_entertainment.repository.EntertainmentRepository;
 import com.aston.search_entertainment.service.EntertainmentService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 public class EntertainmentServiceImpl implements EntertainmentService {
 
     private final EntertainmentRepository entertainmentRepository;
-
+    private final CommentRepository commentRepository;
     private final EntertainmentMapper entertainmentMapper;
 
     @Override
@@ -35,14 +36,13 @@ public class EntertainmentServiceImpl implements EntertainmentService {
 
     @Override
     public EntertainmentResponse getById(Long id) {
-        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.findEntertainmentById(id));
+        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.getEntertainmentById(id));
     }
 
     @Override
     public EntertainmentResponse createEntertainment(EntertainmentRequest entertainmentRequest) {
         Entertainment entertainment = entertainmentMapper.toEntertainment(entertainmentRequest);
         entertainmentRepository.save(entertainment);
-
         return entertainmentMapper.toEntertainmentResponse(entertainment);
     }
 
@@ -53,7 +53,7 @@ public class EntertainmentServiceImpl implements EntertainmentService {
                 entertainmentRequest.getUrl(),
                 id);
 
-        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.findEntertainmentById(id));
+        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.getEntertainmentById(id));
     }
 
     @Override

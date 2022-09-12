@@ -1,7 +1,8 @@
 package com.aston.search_entertainment.domain.dto.request;
 
-import com.aston.search_entertainment.domain.entity.Role;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Builder
+@AllArgsConstructor
 public class UserRequest {
 
     private String email;
@@ -20,7 +23,7 @@ public class UserRequest {
 
     private String lastName;
 
-    private Role role;
+    private String role;
 
     private boolean enable;
 }

@@ -19,6 +19,4 @@ public interface CommentMapper {
     @Mapping(target = "user_id", expression = "java(comment.getUser().getId())")
     @Mapping(target = "entertainment_id", expression = "java(comment.getEntertainment().getId())")
     CommentResponse toCommentResponse(Comment comment);
-
-
 }

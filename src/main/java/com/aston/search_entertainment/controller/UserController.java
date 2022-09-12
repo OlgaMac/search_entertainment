@@ -8,6 +8,8 @@ import com.aston.search_entertainment.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
@@ -26,16 +28,12 @@ import java.util.stream.Collectors;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/users")
 public class UserController {
     private final UserMapper userMapper;
     private final UserService userService;
 
-    @Autowired
-    public UserController(UserMapper userMapper, UserService userService) {
-        this.userMapper = userMapper;
-        this.userService = userService;
-    }
 
     @ApiOperation(value = "Получение всех пользователей")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Студенты найдены",
@@ -65,7 +63,6 @@ public class UserController {
         }
         return new ResponseEntity<>(result, OK);
     }
-
     @ApiOperation(value = "Создание нового пользователя")
     @PostMapping()
     public UserResponse createUser(@RequestBody UserRequest userRequest) {

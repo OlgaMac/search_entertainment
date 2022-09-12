@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class EntertainmentRequestUpdate {
 
-
+    private Long id;
 
     private String location;
 
