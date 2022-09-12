@@ -1,7 +1,7 @@
 package com.aston.search_entertainment.domain.mapper;
 
 import com.aston.search_entertainment.domain.entity.Entertainment;
-import com.aston.search_entertainment.domain.entity.User;
+import com.aston.search_entertainment.domain.entity.UserEntity;
 import com.aston.search_entertainment.repository.EntertainmentRepository;
 import com.aston.search_entertainment.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +19,8 @@ public class UserFromRepoMapper {
     private final EntertainmentRepository entertainmentRepository;
 
     @Named("getUserFromRepo")
-    public User getUserFromRepo(Long id) {
-        Optional<User> user = userRepository.findById(id);
+    public UserEntity getUserFromRepo(Long id) {
+        Optional<UserEntity> user = userRepository.findById(id);
         return user.get();
     }
 

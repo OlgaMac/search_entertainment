@@ -1,7 +1,5 @@
 package com.aston.search_entertainment.domain.dto.response;
 
-import com.aston.search_entertainment.domain.entity.User;
-import com.aston.search_entertainment.domain.entity.Company;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -12,7 +10,6 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter
