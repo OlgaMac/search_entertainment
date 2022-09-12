@@ -3,7 +3,7 @@ package com.aston.search_entertainment.service.impl;
 import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
-import com.aston.search_entertainment.domain.entity.User;
+import com.aston.search_entertainment.domain.entity.UserEntity;
 import com.aston.search_entertainment.domain.mapper.UserMapper;
 import com.aston.search_entertainment.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class UserEntityServiceImplTest {
-    private User user;
+    private UserEntity user;
     private UserRequest userRequest;
     private UserResponse userResponse;
     @Mock
@@ -68,8 +68,8 @@ class UserEntityServiceImplTest {
                 when(userRepository.findById(1L))
                 .thenReturn(Optional.ofNullable(user));
         Mockito.lenient().when(userMapper.toResponse(user)).thenReturn(userResponse);
-        Optional<User> response = userService.findById(1L);
-        User result = response.get();
+        Optional<UserEntity> response = userService.findById(1L);
+        UserEntity result = response.get();
         assertEquals(1L, result.getId());
     }
 
@@ -80,27 +80,11 @@ class UserEntityServiceImplTest {
     }
 
     @Test
-    void createUser() {
-        Mockito.lenient().when(userRepository.save(user)).thenReturn(user);
-        Mockito.lenient().when(userMapper.fromRequest(userRequest)).thenReturn(user);
-        Mockito.lenient().when(userMapper.toResponse(user)).thenReturn(userResponse);
-        UserResponse result = userService.save(userRequest);
-        assertEqualsRequestAndResponse(result, userRequest);
-        Mockito.verify(userRepository, Mockito.times(1)).save(user);
-    }
-
-    @Test
     void updateUser(){
         Mockito.lenient().when(userRepository.findById(1L)).thenReturn(Optional.ofNullable(user));
         Mockito.lenient().when(userMapper.toResponse(user)).thenReturn(userResponse);
         UserResponse result = userService.update(userRequestUpdate);
         assertEquals(result,userResponse);
-
-
-
-
-
-
     }
 
 }

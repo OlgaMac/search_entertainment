@@ -50,13 +50,3 @@ databaseChangeLog:
                   type: BOOLEAN
                   constraints:
                     nullable: false
-  - changeSet:
-      id: 1.1.2
-      author: olga.makeeva
-      changes:
-        - addForeignKeyConstraint:
-            baseColumnNames: user_id
-            baseTableName: company
-            constraintName: fk_company_users
-            referencedColumnNames: id
-            referencedTableName: users

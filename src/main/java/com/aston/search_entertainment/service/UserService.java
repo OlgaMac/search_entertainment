@@ -14,7 +14,6 @@ import java.util.Optional;
 public interface UserService {
     List<UserEntity> findAll ();
     Optional<UserEntity> findById(long id) throws ChangeSetPersister.NotFoundException;
-    UserResponse save(UserRequest userRequest);
     void deleteById(Long id);
     UserResponse update(UserRequestUpdate update);
 

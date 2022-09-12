@@ -45,14 +45,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public UserResponse save(UserRequest userRequest) {
-        UserEntity userEntity = userMapper.fromRequest(userRequest);
-        userRepository.save(userEntity);
-        return userMapper.toResponse(userEntity);
-    }
-
-    @Override
-    @Transactional
     public void deleteById(Long id) {
         userRepository.deleteById(id);
     }

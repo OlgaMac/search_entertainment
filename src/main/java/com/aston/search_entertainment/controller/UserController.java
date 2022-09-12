@@ -63,12 +63,6 @@ public class UserController {
         }
         return new ResponseEntity<>(result, OK);
     }
-    @ApiOperation(value = "Create user")
-    @PostMapping()
-    public UserResponse createUser(@RequestBody UserRequest userRequest) {
-        return userService.save(userRequest);
-
-    }
 
     @ApiOperation("Delete user")
     @DeleteMapping("/{id}")

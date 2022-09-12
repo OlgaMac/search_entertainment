@@ -4,16 +4,15 @@ import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
 import com.aston.search_entertainment.domain.entity.Role;
-import com.aston.search_entertainment.domain.entity.User;
-
+import com.aston.search_entertainment.domain.entity.UserEntity;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class EntityUserGenerator {
     private static final Long id = 1L;
-    public static User generateUser(){
-        User user = User.builder()
+    public static UserEntity generateUser(){
+        UserEntity user = UserEntity.builder()
                 .id(id)
                 .email("mail@mail.com")
                 .password("root")
@@ -21,7 +20,7 @@ public class EntityUserGenerator {
                 .firstName("Ignat")
                 .lastName("Petrov")
                 .created(Timestamp.valueOf(LocalDateTime.now()))
-                .enable(false)
+                .enabled(false)
                 .build();
      return user;
     }
