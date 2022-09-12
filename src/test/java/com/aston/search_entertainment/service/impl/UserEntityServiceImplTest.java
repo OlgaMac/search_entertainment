@@ -27,11 +27,15 @@ class UserEntityServiceImplTest {
     private User user;
     private UserRequest userRequest;
     private UserResponse userResponse;
+    @Mock
     private UserRequestUpdate userRequestUpdate;
+
     @InjectMocks
     UserServiceImpl userService;
+
     @Mock
     UserRepository userRepository;
+
     @Mock
     UserMapper userMapper;
 
@@ -88,6 +92,14 @@ class UserEntityServiceImplTest {
     @Test
     void updateUser(){
         Mockito.lenient().when(userRepository.findById(1L)).thenReturn(Optional.ofNullable(user));
+        Mockito.lenient().when(userMapper.toResponse(user)).thenReturn(userResponse);
+        UserResponse result = userService.update(userRequestUpdate);
+        assertEquals(result,userResponse);
+
+
+
+
+
 
     }
 
