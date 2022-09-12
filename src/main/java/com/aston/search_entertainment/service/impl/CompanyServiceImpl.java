@@ -4,7 +4,6 @@ import com.aston.search_entertainment.domain.dto.request.CompanyRequest;
 import com.aston.search_entertainment.domain.dto.request.CompanyRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.CompanyResponse;
 import com.aston.search_entertainment.domain.entity.Company;
-import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.domain.mapper.CompanyMapper;
 import com.aston.search_entertainment.repository.CompanyRepository;
 import com.aston.search_entertainment.repository.UserRepository;

@@ -9,10 +9,6 @@ import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.entity.Entertainment;
 import com.aston.search_entertainment.domain.entity.Role;
 import com.aston.search_entertainment.domain.entity.User;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;

@@ -6,14 +6,10 @@ import com.aston.search_entertainment.domain.dto.request.CompanyRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.CompanyResponse;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.entity.User;
-import com.aston.search_entertainment.repository.UserRepository;
-import com.aston.search_entertainment.service.impl.CompanyServiceImpl;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.NullValuePropertyMappingStrategy;
-
-import java.util.Optional;
 
 
 @Mapper(componentModel = "spring"
@@ -28,7 +24,7 @@ public interface CompanyMapper {
     Company fromRequest(CompanyRequest companyRequest);
 
     @Named("getIdFromUser")
-    default Long getIdFromUser(User user){
+    default Long getIdFromUser(User user) {
         return user.getId();
     }
 
