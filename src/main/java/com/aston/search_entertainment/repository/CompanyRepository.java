@@ -14,5 +14,4 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     @Transactional
     @Query("update Company e set e.name = ?1,e.link = ?2,e.location = ?3,e.documents = ?4 where e.id = ?5")
     void setCompanyInfoById(String name, String link, String location, String documents, Long id);
-
 }
