@@ -37,7 +37,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @ApiOperation(value = "Получение всех пользователей")
+    @ApiOperation(value = "Get all users")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Студенты найдены",
             response = List.class)})
     @GetMapping
@@ -50,7 +50,7 @@ public class UserController {
 
     }
 
-    @ApiOperation(value = "Получение пользователя по id")
+    @ApiOperation(value = "Get  User by id")
     @ApiResponses(value = {@ApiResponse(code = 404, message = "Пользователь не найден", response = RuntimeException.class)})
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> findById(@PathVariable long id) {
@@ -65,21 +65,21 @@ public class UserController {
         }
         return new ResponseEntity<>(result, OK);
     }
-    @ApiOperation(value = "Создание нового пользователя")
+    @ApiOperation(value = "Create user")
     @PostMapping()
     public UserResponse createUser(@RequestBody UserRequest userRequest) {
         return userService.save(userRequest);
 
     }
 
-    @ApiOperation("Удаление пользователя")
+    @ApiOperation("Delete user")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUserById(@PathVariable Long id) {
         userService.deleteById(id);
         return ResponseEntity.ok("User delete");
     }
 
-    @ApiOperation("Обновление пользователя")
+    @ApiOperation("Update user")
     @PutMapping
     public UserResponse updateUser(@RequestBody UserRequestUpdate update){
         return userService.update(update);
