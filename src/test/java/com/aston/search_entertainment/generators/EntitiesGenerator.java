@@ -8,11 +8,7 @@ import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.entity.Entertainment;
 import com.aston.search_entertainment.domain.entity.Role;
-import com.aston.search_entertainment.domain.entity.User;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.aston.search_entertainment.domain.entity.UserEntity;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -20,7 +16,7 @@ import java.time.LocalDateTime;
 
 public class EntitiesGenerator {
 
-    public static User user = generateUser();
+    public static UserEntity user = generateUser();
 
     private static final Long id = 1L;
 
@@ -84,8 +80,8 @@ public class EntitiesGenerator {
         return company;
     }
 
-    private static User generateUser() {
-        User user = User.builder()
+    private static UserEntity generateUser() {
+        UserEntity user = UserEntity.builder()
                 .id(id)
                 .email("mail@mail.com")
                 .password("qwerty")
