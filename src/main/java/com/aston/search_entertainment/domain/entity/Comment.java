@@ -41,7 +41,7 @@ public class Comment {
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
-    private UserEntity user;
+    private User user;
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)

@@ -33,7 +33,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Builder
-public class UserEntity {
+public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_users_id")

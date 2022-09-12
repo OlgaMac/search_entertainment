@@ -6,7 +6,9 @@ import com.aston.search_entertainment.domain.dto.response.CompanyResponse;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.mapper.CompanyMapper;
 import com.aston.search_entertainment.repository.CompanyRepository;
+import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.CompanyService;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,8 +24,8 @@ import java.util.stream.Collectors;
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
-
     private final CompanyMapper companyMapper;
+    private final UserRepository userRepository;
 
     @Override
     public List<CompanyResponse> findAll() {
@@ -34,13 +36,14 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyResponse findById(long id) {
+    public CompanyResponse findById(Long id) {
         return companyRepository.findById(id)
                 .stream()
                 .map(companyMapper::toResponse)
                 .findAny().get();
     }
 
+    @Transactional
     @Override
     public CompanyResponse save(CompanyRequest companyRequest) {
         Company company = companyMapper.fromRequest(companyRequest);
@@ -48,11 +51,15 @@ public class CompanyServiceImpl implements CompanyService {
         return companyMapper.toResponse(company);
     }
 
+    @Transactional
     @Override
     public void deleteById(Long id) {
+        userRepository.findById(companyRepository.getCompanyById(id).getUserId().getId()).get().getCompanies().remove(companyRepository.getCompanyById(id));
+
         companyRepository.deleteById(id);
     }
 
+    @Transactional
     @Override
     public CompanyResponse update(Long id, CompanyRequestUpdate companyRequestUpdate) {
         companyRepository.setCompanyInfoById(companyRequestUpdate.getLocation(),
