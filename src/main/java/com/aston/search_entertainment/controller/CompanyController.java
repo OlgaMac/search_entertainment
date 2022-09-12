@@ -28,7 +28,6 @@ public class CompanyController {
 
     private final CompanyService companyService;
 
-
     @ApiOperation(value = "Get all company")
     @GetMapping
     List<CompanyResponse> getAllCompany() {
@@ -57,10 +56,11 @@ public class CompanyController {
         return companyService.update(companyRequestUpdate.getId(), companyRequestUpdate);
     }
 
+    @ApiOperation(value = "Delete company")
     @DeleteMapping({"/{id}"})
     ResponseEntity<String> deleteCompanyById(@PathVariable(value = "id") Long id) {
-        log.info("Receiving request for deleting comment with id: {}", id);
+        log.info("Receiving request for deleting company with id: {}", id);
         companyService.deleteById(id);
-        return ResponseEntity.ok("Comment delete successfully");
+        return ResponseEntity.ok("Company delete successfully");
     }
 }

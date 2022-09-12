@@ -8,7 +8,7 @@ import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.entity.Entertainment;
 import com.aston.search_entertainment.domain.entity.Role;
-import com.aston.search_entertainment.domain.entity.UserEntity;
+import com.aston.search_entertainment.domain.entity.User;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 
 public class EntitiesGenerator {
 
-    public static UserEntity user = generateUser();
+    public static User user = generateUser();
 
     private static final Long id = 1L;
 
@@ -80,8 +80,8 @@ public class EntitiesGenerator {
         return company;
     }
 
-    private static UserEntity generateUser() {
-        UserEntity user = UserEntity.builder()
+    private static User generateUser() {
+        User user = User.builder()
                 .id(id)
                 .email("mail@mail.com")
                 .password("qwerty")

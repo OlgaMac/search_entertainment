@@ -4,15 +4,16 @@ import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
 import com.aston.search_entertainment.domain.entity.Role;
-import com.aston.search_entertainment.domain.entity.UserEntity;
+import com.aston.search_entertainment.domain.entity.User;
+
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class EntityUserGenerator {
     private static final Long id = 1L;
-    public static UserEntity generateUser(){
-        UserEntity user = UserEntity.builder()
+    public static User generateUser(){
+        User user = User.builder()
                 .id(id)
                 .email("mail@mail.com")
                 .password("root")

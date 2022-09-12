@@ -14,6 +14,4 @@ public interface EntertainmentRepository extends JpaRepository<Entertainment, Lo
     void setEntertainmentInfoById(String location, String documents,String url, Long id);
 
     Entertainment getEntertainmentById(Long id);
-
-
 }
