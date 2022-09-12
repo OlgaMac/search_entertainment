@@ -12,12 +12,9 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CompanyRequest {
 
-    private long id;
-
+    private Long id;
     private String name;
-
-    private User userId;
+    private Long userId;
     private String location;
-
     private String documents;
 }

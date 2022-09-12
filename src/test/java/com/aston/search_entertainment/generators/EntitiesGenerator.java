@@ -1,13 +1,21 @@
 package com.aston.search_entertainment.generators;
 
 import com.aston.search_entertainment.domain.dto.request.CommentRequest;
+import com.aston.search_entertainment.domain.dto.request.EntertainmentRequest;
 import com.aston.search_entertainment.domain.dto.response.CommentResponse;
+import com.aston.search_entertainment.domain.dto.response.EntertainmentResponse;
 import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.entity.Entertainment;
 import com.aston.search_entertainment.domain.entity.Role;
 import com.aston.search_entertainment.domain.entity.User;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class EntitiesGenerator {
@@ -52,6 +60,7 @@ public class EntitiesGenerator {
         return commentResponse;
     }
 
+
     public static Entertainment generateEntertainment() {
         Entertainment entertainment = Entertainment.builder()
                 .id(id)
@@ -88,6 +97,36 @@ public class EntitiesGenerator {
                 .build();
 
         return user;
+    }
+
+
+
+    public static EntertainmentResponse generateEntertainmentResponse() {
+        EntertainmentResponse entertainmentResponse = EntertainmentResponse.builder()
+                .id(id)
+                .name("Aston")
+                .company_id(1L)
+                .location("location")
+                .documents("documents")
+                .url("url")
+                .date(LocalDate.now())
+                .rating(5.0)
+                .build();
+
+        return entertainmentResponse;
+    }
+
+    public static EntertainmentRequest generateEntertainmentRequest() {
+        EntertainmentRequest entertainmentRequest = EntertainmentRequest.builder()
+                .name("Aston")
+                .company_id(1L)
+                .location("location")
+                .documents("documents")
+                .url("url")
+                .rating(5.0)
+                .build();
+
+        return entertainmentRequest;
     }
 
 }
