@@ -66,4 +66,5 @@ public class UserEntity {
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Company> companies;
+
 }
