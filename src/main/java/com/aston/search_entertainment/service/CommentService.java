@@ -13,6 +13,7 @@ public interface CommentService {
      *
      * @return list of CommentDto
      */
+
     List<CommentResponse> getListOfCommentDto();
 
     CommentResponse createComment(CommentRequest commentRequest);
