@@ -18,6 +18,6 @@ public interface EntertainmentMapper {
     @Mapping(target = "active", constant = "true")
     Entertainment toEntertainment(EntertainmentRequest request);
 
-    @InheritInverseConfiguration
+    @Mapping(source = "company", target = "company_id", qualifiedByName = "getIdFromCompany")
     EntertainmentResponse toEntertainmentResponse(Entertainment entertainment);
 }

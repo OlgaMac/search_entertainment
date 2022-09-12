@@ -14,5 +14,7 @@ public interface EntertainmentRepository extends JpaRepository<Entertainment, Lo
     @Query("update Entertainment e set e.location = ?1,e.documents = ?2,e.url = ?3 where e.id = ?4")
     void setEntertainmentInfoById(String location, String documents,String url, Long id);
 
-    Entertainment findEntertainmentById(Long id);
+    Entertainment getEntertainmentById(Long id);
+
+
 }
