@@ -110,7 +110,6 @@ class EntertainmentServiceImplTest {
     void editComment() {
         Mockito
                 .when(entertainmentRepository.getEntertainmentById(1L))
-
                 .thenReturn(entertainment);
 
         entertainmentService.editEntertainment(1L, entertainmentRequestUpdate);
