@@ -9,9 +9,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CompanyRequestUpdate {
 
-    private long id;
+    private Long id;
 
     private String name;
+
+    private String link;
 
     private String location;
 

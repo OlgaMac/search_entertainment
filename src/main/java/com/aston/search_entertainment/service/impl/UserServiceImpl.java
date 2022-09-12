@@ -3,7 +3,7 @@ package com.aston.search_entertainment.service.impl;
 import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
-import com.aston.search_entertainment.domain.entity.UserEntity;
+import com.aston.search_entertainment.domain.entity.User;
 import com.aston.search_entertainment.domain.mapper.UserMapper;
 import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.UserService;
@@ -27,21 +27,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> findAll() {
-        List<UserEntity> users = userRepository.findAll();
+    public List<User> findAll() {
+        List<User> users = userRepository.findAll();
         return users;
     }
 
     @Override
-    public Optional<UserEntity> findById(long id) {
-        Optional<UserEntity> user = userRepository.findById(id);
+    public Optional<User> findById(long id) {
+        Optional<User> user = userRepository.findById(id);
         return user;
     }
 
     @Override
     @Transactional
     public UserResponse save(UserRequest userRequest) {
-        UserEntity user = userMapper.fromRequest(userRequest);
+        User user = userMapper.fromRequest(userRequest);
         userRepository.save(user);
         return userMapper.toResponse(user);
     }
@@ -55,7 +55,8 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponse update(UserRequestUpdate update) {
 
-        UserEntity user = userRepository.findById(update.getId()).get();
+
+        User user = userRepository.findById(update.getId()).get();
 
         user.setEmail(update.getEmail());
 

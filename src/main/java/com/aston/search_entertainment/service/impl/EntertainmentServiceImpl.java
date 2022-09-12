@@ -8,6 +8,7 @@ import com.aston.search_entertainment.domain.dto.response.EntertainmentResponse;
 import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.entity.Entertainment;
 import com.aston.search_entertainment.domain.mapper.EntertainmentMapper;
+import com.aston.search_entertainment.repository.CommentRepository;
 import com.aston.search_entertainment.repository.EntertainmentRepository;
 import com.aston.search_entertainment.service.EntertainmentService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 public class EntertainmentServiceImpl implements EntertainmentService {
 
     private final EntertainmentRepository entertainmentRepository;
-
+    private final CommentRepository commentRepository;
     private final EntertainmentMapper entertainmentMapper;
 
     @Override
@@ -51,6 +52,7 @@ public class EntertainmentServiceImpl implements EntertainmentService {
                 entertainmentRequest.getDocuments(),
                 entertainmentRequest.getUrl(),
                 id);
+
 
         return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.getEntertainmentById(id));
     }
