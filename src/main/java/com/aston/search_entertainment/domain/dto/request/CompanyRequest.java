@@ -1,6 +1,5 @@
 package com.aston.search_entertainment.domain.dto.request;
 
-import com.aston.search_entertainment.domain.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

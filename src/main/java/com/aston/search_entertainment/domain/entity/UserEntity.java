@@ -33,7 +33,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Builder
-public class User {
+public class UserEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_users_id")
@@ -66,4 +66,5 @@ public class User {
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Company> companies;
+
 }
