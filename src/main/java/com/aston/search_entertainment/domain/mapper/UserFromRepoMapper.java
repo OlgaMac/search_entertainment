@@ -20,8 +20,8 @@ public class UserFromRepoMapper {
 
     @Named("getUserFromRepo")
     public UserEntity getUserFromRepo(Long id) {
-        Optional<UserEntity> user = userRepository.findById(id);
-        return user.get();
+        UserEntity user = userRepository.getUserEntityById(id);
+        return user;
     }
 
     @Named("getEntertainmentFromRepo")

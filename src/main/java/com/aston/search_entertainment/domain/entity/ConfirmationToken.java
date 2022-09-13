@@ -32,7 +32,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name = "confirmation_tokens")
 @Entity
 //@EntityListeners(AuditingEntityListener.class)
-public class ConfirmationToken {
+public class  ConfirmationToken {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "seq_confirmation_tokens_id")
