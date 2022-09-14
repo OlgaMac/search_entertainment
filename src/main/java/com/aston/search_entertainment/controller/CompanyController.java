@@ -3,11 +3,16 @@ package com.aston.search_entertainment.controller;
 import com.aston.search_entertainment.domain.dto.request.CompanyRequest;
 import com.aston.search_entertainment.domain.dto.request.CompanyRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.CompanyResponse;
+import com.aston.search_entertainment.domain.entity.Company;
+import com.aston.search_entertainment.domain.entity.CompanyPage;
+import com.aston.search_entertainment.domain.entity.CompanySearchCriteria;
 import com.aston.search_entertainment.service.CompanyService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping(value = "/company")
+@RequestMapping(value = "/company/criteria")
 @RequiredArgsConstructor
 @RestController
 @Slf4j
@@ -62,5 +67,14 @@ public class CompanyController {
         log.info("Receiving request for deleting company with id: {}", id);
         companyService.deleteById(id);
         return ResponseEntity.ok("Company delete successfully");
+    }
+
+    @ApiOperation(value = "Search companies by company name with the use of API Criteria")
+    @GetMapping("/criteria")
+    public ResponseEntity<Page<Company>> getCompanies(CompanyPage companyPage,
+                                                      CompanySearchCriteria companySearchCriteria) {
+        log.info("Search companies by name");
+        return new ResponseEntity<>(companyService.getCompanies(companyPage, companySearchCriteria),
+                HttpStatus.OK);
     }
 }
