@@ -4,13 +4,15 @@ import com.aston.search_entertainment.domain.dto.request.CompanyRequest;
 import com.aston.search_entertainment.domain.dto.request.CompanyRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.CompanyResponse;
 import com.aston.search_entertainment.domain.entity.Company;
+import com.aston.search_entertainment.domain.entity.CompanyPage;
+import com.aston.search_entertainment.domain.entity.CompanySearchCriteria;
 import com.aston.search_entertainment.domain.mapper.CompanyMapper;
 import com.aston.search_entertainment.repository.CompanyRepository;
 import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.CompanyService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +28,9 @@ public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository companyRepository;
     private final CompanyMapper companyMapper;
     private final UserRepository userRepository;
+
+    private final CompanyCriteriaRepoService companyCriteriaRepoService;
+
 
     @Override
     public List<CompanyResponse> findAll() {
@@ -70,5 +75,10 @@ public class CompanyServiceImpl implements CompanyService {
                 id);
 
         return companyMapper.toResponse(companyRepository.getCompanyById(id));
+    }
+
+    public Page<Company> getCompanies(CompanyPage companyPage,
+                                      CompanySearchCriteria companySearchCriteria) {
+        return companyCriteriaRepoService.findAllWithFilters(companyPage, companySearchCriteria);
     }
 }
