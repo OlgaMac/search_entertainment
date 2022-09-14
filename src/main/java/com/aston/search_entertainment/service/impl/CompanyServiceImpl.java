@@ -41,8 +41,8 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public CompanyResponse findById(Long id) {
         Company company = companyRepository.findById(id).orElse(null);
-        if (company == null) {
-            throw new NoSuchElementException("Company not found with id : " + id);
+        if (company ==null) {
+            throw new EntityNotFoundException("Company", "id", id);
         }
         return companyMapper.toResponse(company);
     }

@@ -40,7 +40,7 @@ public class EntertainmentServiceImpl implements EntertainmentService {
     public EntertainmentResponse getById(Long id) {
         Entertainment entertainment = entertainmentRepository.getEntertainmentById(id);
         if (entertainment ==null) {
-            throw new NoSuchElementException("Entertainment not found with id : " + id);
+            throw new EntityNotFoundException("Entertainment", "id", id);
         }
         return entertainmentMapper.toEntertainmentResponse(entertainment);
     }

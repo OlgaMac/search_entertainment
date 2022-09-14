@@ -54,7 +54,7 @@ public class CommentServiceImpl implements CommentService {
     public CommentResponse getById(Long id) {
         Comment comment = commentRepository.getCommentById(id);
         if (comment == null) {
-            throw new NoSuchElementException("Comment not found with id : " + id);
+            throw new EntityNotFoundException("Comment", "id", id);
         }
         return commentMapper.toCommentResponse(comment);
     }

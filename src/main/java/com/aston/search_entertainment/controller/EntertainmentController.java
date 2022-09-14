@@ -27,7 +27,7 @@ public class EntertainmentController {
 
     private final EntertainmentService entertainmentService;
 
-    @ApiOperation(value = "Get all comments")
+    @ApiOperation(value = "Get all entertainments")
     @GetMapping
     List<EntertainmentResponse> getAllComments() {
 
