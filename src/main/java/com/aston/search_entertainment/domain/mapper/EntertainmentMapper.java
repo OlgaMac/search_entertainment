@@ -20,4 +20,5 @@ public interface EntertainmentMapper {
 
     @Mapping(source = "company", target = "company_id", qualifiedByName = "getIdFromCompany")
     EntertainmentResponse toEntertainmentResponse(Entertainment entertainment);
+
 }

@@ -3,8 +3,10 @@ package com.aston.search_entertainment.service.impl;
 import com.aston.search_entertainment.domain.dto.request.CompanyRequest;
 import com.aston.search_entertainment.domain.dto.request.CompanyRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.CompanyResponse;
+import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.mapper.CompanyMapper;
+import com.aston.search_entertainment.exception.EntityNotFoundException;
 import com.aston.search_entertainment.repository.CompanyRepository;
 import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.CompanyService;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -37,10 +40,11 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public CompanyResponse findById(Long id) {
-        return companyRepository.findById(id)
-                .stream()
-                .map(companyMapper::toResponse)
-                .findAny().get();
+        Company company = companyRepository.findById(id).orElse(null);
+        if (company == null) {
+            throw new NoSuchElementException("Company not found with id : " + id);
+        }
+        return companyMapper.toResponse(company);
     }
 
     @Transactional

@@ -16,6 +16,5 @@ public interface UserService {
     Optional<UserEntity> findById(long id) throws ChangeSetPersister.NotFoundException;
     void deleteById(Long id);
     UserResponse update(UserRequestUpdate update);
-
     UserEntity create(UserEntity userEntity);
 }

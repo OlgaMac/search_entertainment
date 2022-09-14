@@ -51,16 +51,11 @@ public class UserController {
     @ApiOperation(value = "Get  User by id")
     @ApiResponses(value = {@ApiResponse(code = 404, message = "Пользователь не найден", response = RuntimeException.class)})
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> findById(@PathVariable long id) {
-        UserResponse result = null;
-        try {
-            result = userService.findById(id)
+    public ResponseEntity<UserResponse> findById(@PathVariable long id) throws ChangeSetPersister.NotFoundException {
+        UserResponse result  = userService.findById(id)
                     .stream()
                     .map(userMapper::toResponse)
                     .findAny().get();
-        } catch (ChangeSetPersister.NotFoundException e) {
-            e.printStackTrace();
-        }
         return new ResponseEntity<>(result, OK);
     }
 

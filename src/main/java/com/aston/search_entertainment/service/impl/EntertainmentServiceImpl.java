@@ -8,6 +8,7 @@ import com.aston.search_entertainment.domain.dto.response.EntertainmentResponse;
 import com.aston.search_entertainment.domain.entity.Comment;
 import com.aston.search_entertainment.domain.entity.Entertainment;
 import com.aston.search_entertainment.domain.mapper.EntertainmentMapper;
+import com.aston.search_entertainment.exception.EntityNotFoundException;
 import com.aston.search_entertainment.repository.CommentRepository;
 import com.aston.search_entertainment.repository.EntertainmentRepository;
 import com.aston.search_entertainment.service.EntertainmentService;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,7 +38,11 @@ public class EntertainmentServiceImpl implements EntertainmentService {
 
     @Override
     public EntertainmentResponse getById(Long id) {
-        return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.getEntertainmentById(id));
+        Entertainment entertainment = entertainmentRepository.getEntertainmentById(id);
+        if (entertainment ==null) {
+            throw new NoSuchElementException("Entertainment not found with id : " + id);
+        }
+        return entertainmentMapper.toEntertainmentResponse(entertainment);
     }
 
     @Override
@@ -52,8 +58,6 @@ public class EntertainmentServiceImpl implements EntertainmentService {
                 entertainmentRequest.getDocuments(),
                 entertainmentRequest.getUrl(),
                 id);
-
-
         return entertainmentMapper.toEntertainmentResponse(entertainmentRepository.getEntertainmentById(id));
     }
 
