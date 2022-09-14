@@ -14,8 +14,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
-
 import static com.aston.search_entertainment.generators.EntityUserGenerator.generateUser;
 import static com.aston.search_entertainment.generators.EntityUserGenerator.generateUserRequest;
 import static com.aston.search_entertainment.generators.EntityUserGenerator.generateUserRequestUpdate;
@@ -65,11 +63,11 @@ class UserEntityServiceImplTest {
     @Test
     void getById() {
         Mockito.
-                when(userRepository.findById(1L))
-                .thenReturn(Optional.ofNullable(user));
+                when(userRepository.getUserEntityById(1L))
+                .thenReturn(user);
         Mockito.lenient().when(userMapper.toResponse(user)).thenReturn(userResponse);
-        Optional<UserEntity> response = userService.findById(1L);
-        UserEntity result = response.get();
+        UserResponse result = userService.getById(1L);
+
         assertEquals(1L, result.getId());
     }
 
@@ -80,11 +78,11 @@ class UserEntityServiceImplTest {
     }
 
     @Test
-    void updateUser(){
-        Mockito.lenient().when(userRepository.findById(1L)).thenReturn(Optional.ofNullable(user));
+    void updateUser() {
+        Mockito.lenient().when(userRepository.getUserEntityById(1L)).thenReturn(user);
         Mockito.lenient().when(userMapper.toResponse(user)).thenReturn(userResponse);
         UserResponse result = userService.update(userRequestUpdate);
-        assertEquals(result,userResponse);
+        assertEquals(result, userResponse);
     }
 
 }

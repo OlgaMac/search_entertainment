@@ -58,7 +58,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Transactional
     @Override
     public void deleteById(Long id) {
-        userRepository.findById(companyRepository.getCompanyById(id).getUserId().getId()).get().getCompanies().remove(companyRepository.getCompanyById(id));
+        userRepository.getUserEntityById(companyRepository.getCompanyById(id).getUserId().getId()).getCompanies().remove(companyRepository.getCompanyById(id));
 
         companyRepository.deleteById(id);
     }

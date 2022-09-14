@@ -1,6 +1,5 @@
 package com.aston.search_entertainment.domain.dto.response;
 
-import com.aston.search_entertainment.domain.entity.Role;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;

@@ -1,6 +1,5 @@
 package com.aston.search_entertainment.service.impl;
 
-import com.aston.search_entertainment.domain.dto.request.UserRequest;
 import com.aston.search_entertainment.domain.dto.request.UserRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.UserResponse;
 import com.aston.search_entertainment.domain.entity.UserEntity;
@@ -10,12 +9,11 @@ import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -32,15 +30,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> findAll() {
-       List<UserEntity> userEntities =userRepository.findAll();
-       return userEntities;
+    public List<UserResponse> findAll() {
+        return userRepository.findAll()
+                .stream()
+                .map(userMapper::toResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<UserEntity> findById(long id) {
-        Optional<UserEntity> user = userRepository.findById(id);
-        return user;
+    public UserResponse getById(Long id) {
+        return userMapper.toResponse(userRepository.getUserEntityById(id));
+
     }
 
     @Override
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponse update(UserRequestUpdate update) {
 
-        UserEntity user = userRepository.findById(update.getId()).get();
+        UserEntity user = userRepository.getUserEntityById(update.getId());
 
         user.setEmail(update.getEmail());
 
