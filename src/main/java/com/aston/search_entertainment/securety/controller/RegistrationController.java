@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 import static com.aston.search_entertainment.utils.UrlConstants.CONFIRM_URL;
 import static com.aston.search_entertainment.utils.UrlConstants.MAIN_URL;
 import static com.aston.search_entertainment.utils.UrlConstants.REGISTER_URL;
@@ -33,7 +35,7 @@ public class RegistrationController {
     @ApiResponses(value = {@ApiResponse( code = 201, message = "Пользователи найдены"),
     @ApiResponse(code = 500, message = "Внутренняя ошибка сервера")})
     @PostMapping
-    public ResponseEntity<?> register(@RequestBody RegistrationRequest request) {
+    public ResponseEntity<?> register(@Valid @RequestBody RegistrationRequest request) {
         registrationService.register(request);
         return new ResponseEntity<>(CREATED);
     }

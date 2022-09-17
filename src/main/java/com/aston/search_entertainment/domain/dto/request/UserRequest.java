@@ -1,5 +1,6 @@
 package com.aston.search_entertainment.domain.dto.request;
 
+import com.aston.search_entertainment.validation.annotation.Email;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserRequest {
 
+    @Email
     private String email;
 
     private String password;
