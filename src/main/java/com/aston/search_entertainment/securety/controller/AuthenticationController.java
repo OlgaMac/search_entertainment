@@ -63,7 +63,7 @@ public class AuthenticationController {
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
             return new ResponseEntity<>("Invalid email/password combination", FORBIDDEN);
-        } 
+        }
     }
 
     @ApiOperation(value = "Выход")

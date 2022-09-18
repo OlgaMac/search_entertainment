@@ -13,6 +13,7 @@ import com.aston.search_entertainment.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,21 +24,16 @@ import static java.time.LocalDateTime.now;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class RegistrationServiceImpl implements RegistrationService {
     private final UserService userService;
     private final EmailConfirmationTokenService emailConfirmationTokenService;
     private final UserMapper userMapper;
     private final EmailSenderService emailSenderService;
-    @Autowired
-    public RegistrationServiceImpl(UserService userService, EmailConfirmationTokenService emailConfirmationTokenService, UserMapper userMapper, EmailSenderService emailSenderService) {
-        this.userService = userService;
-        this.emailConfirmationTokenService = emailConfirmationTokenService;
-        this.userMapper = userMapper;
-        this.emailSenderService = emailSenderService;
-    }
 
     private final static String EMAIL_SUBJECT = "Подтверждение аккаунта";
-    private final static String LINK = "http://localhost:8081/search_entertainment/api/v1.0/registration/confirm?token=";
+    @Value("${mail.answer.host}")
+    private String LINK;
 
     @Transactional
     @Override

@@ -10,6 +10,7 @@ import com.aston.search_entertainment.service.CompanyService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -25,10 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping(value = "/company/criteria")
-@RequiredArgsConstructor
-@RestController
 @Slf4j
+@RestController
+@RequiredArgsConstructor
+@RequestMapping(value = "/company/criteria")
 public class CompanyController {
 
     private final CompanyService companyService;
@@ -40,7 +41,7 @@ public class CompanyController {
         return companyService.findAll();
     }
 
-    @ApiOperation(value = "Get comment by id")
+    @ApiOperation(value = "Get company by id")
     @GetMapping("/{id}")
     CompanyResponse getCompanyById(@PathVariable(value = "id") Long id) throws ChangeSetPersister.NotFoundException {
         log.info("get company by id");

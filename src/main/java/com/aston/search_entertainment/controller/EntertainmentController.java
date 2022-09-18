@@ -7,6 +7,7 @@ import com.aston.search_entertainment.domain.dto.response.EntertainmentResponse;
 import com.aston.search_entertainment.service.EntertainmentService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 
-@RequestMapping(value = "/entertainments")
-@RequiredArgsConstructor
+@Slf4j
 @RestController
+@RequiredArgsConstructor
+@RequestMapping(value = "/entertainments")
 public class EntertainmentController {
 
     private final EntertainmentService entertainmentService;

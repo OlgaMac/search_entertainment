@@ -14,6 +14,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.SchedulingConfigurer;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -35,6 +38,8 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @Configuration
 @ComponentScan("com.aston.search_entertainment")
@@ -44,7 +49,8 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableSwagger2
 @EnableJpaAuditing
-public class Config implements WebMvcConfigurer {
+@EnableScheduling
+public class Config implements WebMvcConfigurer, SchedulingConfigurer {
 
     private final Environment env;
 
@@ -154,4 +160,13 @@ public class Config implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.setScheduler(taskExecutor());
+    }
+
+    @Bean
+    public Executor taskExecutor() {
+        return Executors.newScheduledThreadPool(10);
+    }
 }

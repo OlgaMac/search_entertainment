@@ -3,12 +3,15 @@ package com.aston.search_entertainment.service.impl;
 import com.aston.search_entertainment.domain.entity.Company;
 import com.aston.search_entertainment.domain.entity.CompanyPage;
 import com.aston.search_entertainment.domain.entity.CompanySearchCriteria;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Slf4j
 @Repository
 public class CompanyCriteriaRepoService {
     private final EntityManager entityManager;

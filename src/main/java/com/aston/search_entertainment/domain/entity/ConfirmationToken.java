@@ -5,16 +5,20 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -25,13 +29,15 @@ import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "confirmation_tokens")
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-//@EntityListeners(AuditingEntityListener.class)
+@Table(name = "confirmation_tokens")
+@EntityListeners(AuditingEntityListener.class)
 public class ConfirmationToken {
 
     @Id

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -30,6 +31,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Accessors(chain = true)
 @Table(name = "company")
 public class Company {
 

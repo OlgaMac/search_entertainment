@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -26,11 +27,11 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Builder
+@Accessors(chain = true)
 @Table(name = "entertainment")
 public class Entertainment {
     @Id
@@ -66,6 +67,14 @@ public class Entertainment {
     private boolean active;
 
     @OneToMany(mappedBy = "entertainment"
-            , cascade = CascadeType.ALL)
+            , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Comment> comments;
+
+    public void addComments(Comment comment) {
+        this.comments.add(comment);
+        comment.setEntertainment(this);
+    }
+    public void removeComments(Comment comment) {
+        this.comments.remove(comment);
+    }
 }

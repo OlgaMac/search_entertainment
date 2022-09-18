@@ -64,7 +64,7 @@ class CommentServiceImplTest {
                 .when(commentMapper.toCommentResponse(comment))
                 .thenReturn(commentResponse);
 
-        CommentResponse result = commentService.getById(1L);
+        Comment result = commentService.getById(1L);
 
         assertEquals(1L, result.getId());
 

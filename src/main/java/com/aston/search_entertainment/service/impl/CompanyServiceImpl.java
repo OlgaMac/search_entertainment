@@ -22,13 +22,11 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
     private final CompanyMapper companyMapper;
     private final UserRepository userRepository;
-
     private final CompanyCriteriaRepoService companyCriteriaRepoService;
 
 
