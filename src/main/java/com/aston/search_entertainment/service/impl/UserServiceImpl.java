@@ -8,6 +8,7 @@ import com.aston.search_entertainment.domain.mapper.UserMapper;
 import com.aston.search_entertainment.exception.EntityAlreadyExistsException;
 import com.aston.search_entertainment.repository.UserRepository;
 import com.aston.search_entertainment.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,13 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, UserMapper userMapper) {
-        this.passwordEncoder = passwordEncoder;
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
 
     @Override
     public List<UserEntity> findAll() {
@@ -78,6 +75,4 @@ public class UserServiceImpl implements UserService {
         log.info("Пользователь создан");
         return result;
     }
-
-
 }

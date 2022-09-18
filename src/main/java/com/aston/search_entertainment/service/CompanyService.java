@@ -8,9 +8,10 @@ import com.aston.search_entertainment.domain.entity.CompanyPage;
 import com.aston.search_entertainment.domain.entity.CompanySearchCriteria;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface CompanyService {
 
     List<CompanyResponse> findAll ();

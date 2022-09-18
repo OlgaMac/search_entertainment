@@ -27,7 +27,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
+
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
+import static lombok.AccessLevel.PRIVATE;
 
 @Getter
 @Setter
@@ -35,8 +40,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
 @Builder
+@Table(name = "users")
 @Accessors(chain = true)
 @EntityListeners(AuditingEntityListener.class)
 public class UserEntity {
@@ -73,5 +78,18 @@ public class UserEntity {
     @OneToMany(mappedBy = "userId"
             , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Company> companies;
+
+    @Setter(PRIVATE)
+    @OneToMany(mappedBy = "user", fetch = EAGER)
+    private List<Comment> comments = new ArrayList<>();
+
+    public void addComments(Comment comment) {
+        this.comments.add(comment);
+        comment.setUser(this);
+    }
+
+    public void removeComments(Comment comment) {
+        this.comments.remove(comment);
+    }
 
 }

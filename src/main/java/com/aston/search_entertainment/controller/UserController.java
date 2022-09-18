@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.OK;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")

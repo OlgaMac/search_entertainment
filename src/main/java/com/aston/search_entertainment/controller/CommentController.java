@@ -3,6 +3,7 @@ package com.aston.search_entertainment.controller;
 import com.aston.search_entertainment.domain.dto.request.CommentRequest;
 import com.aston.search_entertainment.domain.dto.request.CommentRequestForEdit;
 import com.aston.search_entertainment.domain.dto.response.CommentResponse;
+import com.aston.search_entertainment.domain.mapper.CommentMapper;
 import com.aston.search_entertainment.service.CommentService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
-@RequiredArgsConstructor
-@RestController
-@RequestMapping("/comments")
+import static org.springframework.http.HttpStatus.OK;
+
 @Slf4j
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/comments")
 public class CommentController {
 
     private final CommentService commentService;
+    private final CommentMapper commentMapper;
 
     @ApiOperation(value = "Get all comments")
     @GetMapping
@@ -36,9 +41,12 @@ public class CommentController {
 
     @ApiOperation(value = "Get comment by id")
     @GetMapping("/{id}")
-    ResponseEntity<CommentResponse> getCommentById(@PathVariable Long id) {
-        log.info("get comment by id");
-        return ResponseEntity.ok(commentService.getById(id));
+    public ResponseEntity<CommentResponse> findById(@PathVariable Long id) {
+        CommentResponse result = Optional.of(id)
+                .map(commentService::getById)
+                .map(commentMapper::toCommentResponse)
+                .orElseThrow();
+        return new ResponseEntity<>(result, OK);
     }
 
     @ApiOperation(value = "Create comment")

@@ -2,6 +2,7 @@ package com.aston.search_entertainment.service.impl;
 
 
 import com.aston.search_entertainment.service.EmailSenderService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class EmailSenderServiceImpl implements EmailSenderService {
 
     private JavaMailSender mailSender;
@@ -18,11 +20,6 @@ public class EmailSenderServiceImpl implements EmailSenderService {
 
     @Value("${spring.mail.username}")
     private String USERNAME;
-
-    public EmailSenderServiceImpl(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
-    }
-
 
     @Override
     public void send(String to, String subject, String text) {

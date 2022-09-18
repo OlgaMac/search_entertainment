@@ -5,9 +5,11 @@ import com.aston.search_entertainment.domain.dto.request.EntertainmentRequest;
 import com.aston.search_entertainment.domain.dto.request.EntertainmentRequestUpdate;
 import com.aston.search_entertainment.domain.dto.response.CommentResponse;
 import com.aston.search_entertainment.domain.dto.response.EntertainmentResponse;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface EntertainmentService {
     List<EntertainmentResponse> getListOfEntertainmentDto();
 

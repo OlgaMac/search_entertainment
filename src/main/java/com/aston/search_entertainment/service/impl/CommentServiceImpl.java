@@ -4,6 +4,8 @@ import com.aston.search_entertainment.domain.dto.request.CommentRequest;
 import com.aston.search_entertainment.domain.dto.request.CommentRequestForEdit;
 import com.aston.search_entertainment.domain.dto.response.CommentResponse;
 import com.aston.search_entertainment.domain.entity.Comment;
+import com.aston.search_entertainment.domain.entity.Entertainment;
+import com.aston.search_entertainment.domain.entity.UserEntity;
 import com.aston.search_entertainment.domain.mapper.CommentMapper;
 import com.aston.search_entertainment.repository.CommentRepository;
 import com.aston.search_entertainment.service.CommentService;
@@ -49,12 +51,20 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public CommentResponse getById(Long id) {
-        return commentMapper.toCommentResponse(commentRepository.getCommentById(id));
+    public Comment getById(Long id) {
+        return commentRepository.getCommentById(id);
     }
 
     @Override
     public void deleteCommentById(Long id) {
+        log.info("Удаление комментария с Id: {}", id);
+        Comment comment = this.getById(id);
+        final UserEntity userEntity = comment.getUser();
+        userEntity.removeComments(comment);
+        if (comment.getEntertainment() != null) {
+            final Entertainment entertainment = comment.getEntertainment();
+            entertainment.removeComments(comment);
+        }
         commentRepository.deleteById(id);
     }
 }
