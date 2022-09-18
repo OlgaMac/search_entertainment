@@ -54,21 +54,21 @@ class CommentServiceImplTest {
         assertEquals(request.getRating(), response.getRating());
     }
 
-//    @Test
-//    void getById() {
-//        Mockito
-//                .when(commentRepository.getCommentById(1L))
-//                .thenReturn(comment);
-//
-//        Mockito
-//                .when(commentMapper.toCommentResponse(comment))
-//                .thenReturn(commentResponse);
-//
-//        CommentResponse result = commentService.getById(1L);
-//
-//        assertEquals(1L, result.getId());
-//
-//    }
+    @Test
+    void getById() {
+        Mockito
+                .when(commentRepository.getCommentById(1L))
+                .thenReturn(comment);
+
+        Mockito
+                .when(commentMapper.toCommentResponse(comment))
+                .thenReturn(commentResponse);
+
+        Comment result = commentService.getById(1L);
+
+        assertEquals(1L, result.getId());
+
+    }
 
     @Test
     void getListOfCommentDto() {
@@ -80,28 +80,28 @@ class CommentServiceImplTest {
 
     }
 
-//    @Test
-//    void createComment() {
-//        Mockito
-//                .when(commentRepository.save(comment))
-//                .thenReturn(comment);
-//
-//        Mockito
-//                .when(commentMapper.toComment(commentRequest))
-//                .thenReturn(comment);
-//
-//        Mockito
-//                .when(commentMapper.toCommentResponse(comment))
-//                .thenReturn(commentResponse);
-//
-//        CommentResponse result = commentService.createComment(commentRequest);
-//
-//        assertEqualsRequestAndResponse(commentRequest, result);
-//
-//        Mockito
-//                .verify(commentRepository, Mockito.times(1))
-//                .save(comment);
-//    }
+    @Test
+    void createComment() {
+        Mockito
+                .when(commentRepository.save(comment))
+                .thenReturn(comment);
+
+        Mockito
+                .when(commentMapper.toComment(commentRequest))
+                .thenReturn(comment);
+
+        Mockito
+                .when(commentMapper.toCommentResponse(comment))
+                .thenReturn(commentResponse);
+
+        CommentResponse result = commentService.createComment(commentRequest);
+
+        assertEqualsRequestAndResponse(commentRequest, result);
+
+        Mockito
+                .verify(commentRepository, Mockito.times(1))
+                .save(comment);
+    }
 
     @Test
     void editComment() {
