@@ -58,6 +58,7 @@ public class CompanyCriteriaRepoService {
                     criteriaBuilder.like(employeeRoot.get("name"),
                             "%" + companySearchCriteria.getName() + "%")
             );
+            System.out.println("Searched company is: " + companySearchCriteria.getName());
         }
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
@@ -81,6 +82,12 @@ public class CompanyCriteriaRepoService {
         CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long.class);
         Root<Company> countRoot = countQuery.from(Company.class);
         countQuery.select(criteriaBuilder.count(countRoot)).where(predicate);
-        return entityManager.createQuery(countQuery).getSingleResult();
+        Long result = entityManager.createQuery(countQuery).getSingleResult();
+        if (result == 0) {
+            System.out.println("________________________________________________________________\nNo similar results" +
+                    " for input search" +
+                    " were found in Companies List\n________________________________________________________________");
+        }
+        return result;
     }
 }
